@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SearchEngine.Core.Models;
+using System;
 using System.Threading.Tasks;
 
 namespace SearchEngine.Core.Engines
