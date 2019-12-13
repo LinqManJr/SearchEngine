@@ -50,7 +50,7 @@ namespace SearchEngine.Core.Engines
             var webRequest = WebRequest.Create(urlQuery);
             var response = (HttpWebResponse) await webRequest.GetResponseAsync();
 
-            using (Stream dataStream = response.GetResponseStream())//File.OpenRead("testYandex.xml"))//response.GetResponseStream())
+            using (Stream dataStream = response.GetResponseStream())
             {
                 using (StreamReader reader = new StreamReader(dataStream))
                 {
