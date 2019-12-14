@@ -12,17 +12,22 @@ namespace SearchEngine.Core.Engines
     public class GoogleSearchEngine : ISearchEngine
     {
         private readonly SearchConfig config;
+        private readonly GoogleSearchOptions _options;
 
         public GoogleSearchEngine(SearchConfig config)
         {
             this.config = config;
         }
+        public GoogleSearchEngine(GoogleSearchOptions options)
+        {
+            _options = options;
+        }
 
         public SearchResult Search(string pattern)
         {
-            var searchService = new CustomsearchService(new BaseClientService.Initializer { ApiKey = config.ApiKey });
+            var searchService = new CustomsearchService(new BaseClientService.Initializer { ApiKey = _options.Apikey });
             var listOfRequest = searchService.Cse.List(pattern);
-            listOfRequest.Cx = config.AppId;
+            listOfRequest.Cx = _options.AppId;
 
             Google.Apis.Customsearch.v1.Data.Search data;
             try
@@ -40,7 +45,7 @@ namespace SearchEngine.Core.Engines
 
             return new SearchResult
             {
-                SearchTitle = config.SearchEngine,                
+                SearchTitle = _options.Name,                
                 CountResult = data.SearchInformation.TotalResults,                
                 Results = data.Items.Select(x => new ItemResult(x.Title, x.Link)).ToList()
             };
@@ -48,9 +53,9 @@ namespace SearchEngine.Core.Engines
 
         public async Task<SearchResult> SearchAsync(string pattern)
         {
-            var searchService = new CustomsearchService(new BaseClientService.Initializer { ApiKey = config.ApiKey });
+            var searchService = new CustomsearchService(new BaseClientService.Initializer { ApiKey = _options.Apikey });
             var listOfRequest = searchService.Cse.List(pattern);
-            listOfRequest.Cx = config.AppId;
+            listOfRequest.Cx = _options.AppId;
 
             Google.Apis.Customsearch.v1.Data.Search data;
             try
@@ -68,7 +73,7 @@ namespace SearchEngine.Core.Engines
 
             return new SearchResult
             {
-                SearchTitle = config.SearchEngine,                
+                SearchTitle = _options.Name,                
                 CountResult = data.SearchInformation.TotalResults,                
                 Results = data.Items.Select(x => new ItemResult(x.Title, x.Link)).ToList()
             };

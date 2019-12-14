@@ -8,7 +8,8 @@ namespace SearchEngine.Test
     public class YandexSearchEngineTest
     {
         private SearchConfig config;
-        
+        private YandexSearchOptions _options;
+
         [SetUp]
         public void Setup()
         {
@@ -18,6 +19,7 @@ namespace SearchEngine.Test
                 UserName = "",
                 Url = "https://yandex.com/search/xml"
             };
+            _options = new YandexSearchOptions("yandex", "https://yandex.com/search/xml", "03.304041461:62374306f8f0c1938a6a26f0ce0511be", "johnybond32");
         }
 
         [Test]
