@@ -10,19 +10,13 @@ using System.Threading.Tasks;
 namespace SearchEngine.Core.Engines
 {
     public class BingSearchEngine : ISearchEngine
-    {
-        private readonly SearchConfig _config;
+    {        
         private readonly SearchEngineOptions _options;        
-
-        public BingSearchEngine(SearchConfig config)
-        {
-            _config = config;
-        }       
+                       
         public BingSearchEngine(SearchEngineOptions options)
         {
             _options = options;
-        }
-        
+        }        
 
         public SearchResult Search(string pattern)
         {

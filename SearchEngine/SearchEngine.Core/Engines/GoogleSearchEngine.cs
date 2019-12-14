@@ -10,14 +10,9 @@ using System.Threading.Tasks;
 namespace SearchEngine.Core.Engines
 {
     public class GoogleSearchEngine : ISearchEngine
-    {
-        private readonly SearchConfig config;
+    {        
         private readonly GoogleSearchOptions _options;
-
-        public GoogleSearchEngine(SearchConfig config)
-        {
-            this.config = config;
-        }
+                
         public GoogleSearchEngine(GoogleSearchOptions options)
         {
             _options = options;

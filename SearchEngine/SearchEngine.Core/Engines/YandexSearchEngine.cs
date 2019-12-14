@@ -14,14 +14,10 @@ using System.Xml.Linq;
 namespace SearchEngine.Core.Engines
 {
     public class YandexSearchEngine : ISearchEngine
-    {       
-        private readonly SearchConfig config;
+    {   
+        
         private readonly YandexSearchOptions _options;
-
-        public YandexSearchEngine(SearchConfig config)
-        {
-            this.config = config;
-        }
+        
         public YandexSearchEngine(YandexSearchOptions options)
         {
             _options = options;

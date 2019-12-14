@@ -7,14 +7,12 @@ namespace SearchEngine.Test
 {
     [TestFixture]
     public class BingSearchEngineTest
-    {
-        private SearchConfig _config;
+    {        
         private SearchEngineOptions _options;
         private ISearchEngine _engine;
         [SetUp]
         public void SetUp()
-        {
-            _config = new SearchConfig { ApiKey = "", Url = "" };
+        {            
             _options = new SearchEngineOptions("bing","https://api.cognitive.microsoft.com/bing/v7.0/search", "2efb912d79e84eb6820192d1805fb44b");
             
         }

@@ -7,24 +7,21 @@ namespace SearchEngine.Test
 {
     [TestFixture]
     public class GoogleSearchEngineTest
-    {
-        private SearchConfig config;
+    {       
         private GoogleSearchOptions _options;
         private ISearchEngine _searchEngine;
         public GoogleSearchEngineTest()
-        {
-            config = new SearchConfig { ApiKey = "", AppId = "" };
+        {           
             _options = new GoogleSearchOptions("google", "", "AIzaSyB3ex6PDKCy54J92_1rB0q1TBn1jbv43SU", "012320430393294220051:cxnkugrhcjf");
         }
 
         [SetUp]
         public void SetUp()
-        {
-            config = new SearchConfig { ApiKey = "", AppId = "" };
+        {           
             _options = new GoogleSearchOptions("google", "", "AIzaSyB3ex6PDKCy54J92_1rB0q1TBn1jbv43SU", "012320430393294220051:cxnkugrhcjf");
             _searchEngine = new GoogleSearchEngine(_options);
         }
-        //Expected: "Message[The provided API key is invalid.] Location[ - ] Reaso..."
+       
         [Test]
         public void ShouldReturnSearchResult()
         {            
