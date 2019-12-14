@@ -16,14 +16,20 @@ namespace SearchEngine.Core.Engines
     public class YandexSearchEngine : ISearchEngine
     {       
         private readonly SearchConfig config;
+        private readonly YandexSearchOptions _options;
+
         public YandexSearchEngine(SearchConfig config)
         {
             this.config = config;
         }
+        public YandexSearchEngine(YandexSearchOptions options)
+        {
+            _options = options;
+        }
 
         public SearchResult Search(string pattern)
         {
-            string urlQuery = config.ToYandexSearchUrl(pattern);
+            string urlQuery = _options.ToYandexSearchUrl(pattern);
 
             var webRequest = WebRequest.Create(urlQuery);
             HttpWebResponse response = (HttpWebResponse)webRequest.GetResponseAsync().Result;
@@ -45,7 +51,7 @@ namespace SearchEngine.Core.Engines
 
         public async Task<SearchResult> SearchAsync(string pattern)
         {
-            string urlQuery = config.ToYandexSearchUrl(pattern);
+            string urlQuery = _options.ToYandexSearchUrl(pattern);
 
             var webRequest = WebRequest.Create(urlQuery);
             var response = (HttpWebResponse) await webRequest.GetResponseAsync();
@@ -62,8 +68,7 @@ namespace SearchEngine.Core.Engines
                     }
                 }
             }
-
-            //TODO: add real cancellation token, if throw cancel - return error Query is cancel
+            
         }
 
         private SearchResult ParseResult(XDocument xDoc)
@@ -93,8 +98,8 @@ namespace SearchEngine.Core.Engines
                 itemsResult.Add(new ItemResult(link, title));
             }                
 
-            return new SearchResult { CountResult = long.Parse(countResult), Results = itemsResult, Error = error, SearchTitle = config.SearchEngine};
-            //TODO: Move parse method to tryParse
+            return new SearchResult { CountResult = long.Parse(countResult), Results = itemsResult, Error = error, SearchTitle = _options.Name};
+            
         }
         private bool TryParse(XDocument xDoc, out ErrorItem errorResult)
         {            

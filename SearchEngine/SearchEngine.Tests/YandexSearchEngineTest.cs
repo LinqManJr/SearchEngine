@@ -6,26 +6,19 @@ using System.Threading.Tasks;
 namespace SearchEngine.Test
 {
     public class YandexSearchEngineTest
-    {
-        private SearchConfig config;
+    {        
         private YandexSearchOptions _options;
 
         [SetUp]
         public void Setup()
-        {
-            config = new SearchConfig
-            {
-                ApiKey = "",
-                UserName = "",
-                Url = "https://yandex.com/search/xml"
-            };
+        {            
             _options = new YandexSearchOptions("yandex", "https://yandex.com/search/xml", "03.304041461:62374306f8f0c1938a6a26f0ce0511be", "johnybond32");
         }
 
         [Test]
         public void ShouldReturnResult()
         {
-            var searchEngine = new YandexSearchEngine(config);
+            var searchEngine = new YandexSearchEngine(_options);
             var result = searchEngine.Search("yandex");
 
             Assert.IsNull(result.Error);
@@ -35,8 +28,8 @@ namespace SearchEngine.Test
         [Test]
         public void ShouldReturnErrorResultIfInvalidSearch()
         {
-            config.Url = "https://yandex.ru/search/xml";
-            var searchEngine = new YandexSearchEngine(config);
+            _options.Uri = "https://yandex.ru/search/xml";
+            var searchEngine = new YandexSearchEngine(_options);
             var result = searchEngine.Search("yandex");
 
             Assert.IsNotNull(result.Error);
@@ -48,8 +41,8 @@ namespace SearchEngine.Test
         [Test]
         public void ShouldReturnErrorResultIfInvalidApiKeyOrUserName()
         {
-            config.ApiKey = "03.304041461:62374326f8f0c193806a26f0cc0511be";
-            var searchEngine = new YandexSearchEngine(config);
+            _options.Apikey = "03.304041461:62374326f8f0c193806a26f0cc0511be";
+            var searchEngine = new YandexSearchEngine(_options);
             var result = searchEngine.Search("yandex");
 
             Assert.IsNotNull(result.Error);
@@ -58,9 +51,9 @@ namespace SearchEngine.Test
         }        
 
         [Test]
-        public async Task ShouldReturnResulAsync()
+        public async Task ShouldReturnResultAsync()
         {
-            var searchEngine = new YandexSearchEngine(config);
+            var searchEngine = new YandexSearchEngine(_options);
             var result = await searchEngine.SearchAsync("yandex");
 
             Assert.IsNull(result.Error);
