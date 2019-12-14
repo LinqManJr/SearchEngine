@@ -33,16 +33,14 @@ namespace SearchEngine.WebApp
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                //app.UseExceptionHandler("/Home/Error");
                 
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
-
-            //app.UseAuthorization();
+            app.UseRouting();            
 
             app.UseEndpoints(endpoints =>
             {
