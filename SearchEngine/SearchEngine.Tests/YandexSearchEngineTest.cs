@@ -14,8 +14,8 @@ namespace SearchEngine.Test
         {
             config = new SearchConfig
             {
-                ApiKey = "03.304041461:62374306f8f0c1938a6a26f0ce0511be",
-                UserName = "johnybond32",
+                ApiKey = "",
+                UserName = "",
                 Url = "https://yandex.com/search/xml"
             };
         }

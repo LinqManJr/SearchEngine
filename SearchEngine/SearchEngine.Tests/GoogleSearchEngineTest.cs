@@ -12,13 +12,13 @@ namespace SearchEngine.Test
         private ISearchEngine _searchEngine;
         public GoogleSearchEngineTest()
         {
-            config = new SearchConfig { ApiKey = "AIzaSyB3ex6PDKCy54J92_1rB0q1TBn1jbv43SU", AppId = "012320430393294220051:cxnkugrhcjf" };            
+            config = new SearchConfig { ApiKey = "", AppId = "" };            
         }
 
         [SetUp]
         public void SetUp()
         {
-            config = new SearchConfig { ApiKey = "AIzaSyB3ex6PDKCy54J92_1rB0q1TBn1jbv43SU", AppId = "012320430393294220051:cxnkugrhcjf" };
+            config = new SearchConfig { ApiKey = "", AppId = "" };
             _searchEngine = new GoogleSearchEngine(config);
         }
 

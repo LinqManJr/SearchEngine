@@ -13,7 +13,7 @@ namespace SearchEngine.Test
         [SetUp]
         public void SetUp()
         {
-            _config = new SearchConfig { ApiKey = "2efb912d79e84eb6820192d1805fb44b", Url = "https://api.cognitive.microsoft.com/bing/v7.0/search" };            
+            _config = new SearchConfig { ApiKey = "", Url = "" };            
         }
 
         [Test]
