@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SearchEngine.Domain.Context;
 
 namespace SearchEngine.WebApp
 {
@@ -22,7 +24,10 @@ namespace SearchEngine.WebApp
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            var connectionString = Configuration.GetConnectionString("SEConnection");
+            services.AddDbContext<SearchContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddControllersWithViews();           
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
