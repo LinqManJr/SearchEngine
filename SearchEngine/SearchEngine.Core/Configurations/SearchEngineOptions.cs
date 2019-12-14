@@ -2,15 +2,8 @@
 {
     public class SearchEngineOptions
     {
-        public string Name { get; }
+        public string Name { get; set; }
         public string Uri { get; set; }
-        public string Apikey { get; set; }
-
-        public SearchEngineOptions(string name, string uri, string apikey)
-        {
-            Name = name;
-            Uri = uri;
-            Apikey = apikey;
-        }
+        public string Apikey { get; set; }               
     }
 }

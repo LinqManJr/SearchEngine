@@ -9,8 +9,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
 using SearchEngine.Domain.Context;
+using SearchEngine.WebApp.Services;
 
 namespace SearchEngine.WebApp
 {
@@ -28,7 +30,10 @@ namespace SearchEngine.WebApp
             var connectionString = Configuration.GetConnectionString("SEConnection");
             services.AddDbContext<SearchContext>(options => options.UseSqlServer(connectionString));
 
-            
+            services.AddScoped<ISearchEngine, YandexSearchEngine>();
+            services.AddScoped<ISearchEngine, GoogleSearchEngine>();
+            services.AddScoped<ISearchEngine, BingSearchEngine>();
+            services.AddScoped<SearchServiceFactory>();
 
             services.AddControllersWithViews();           
         }
