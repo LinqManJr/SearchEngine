@@ -8,4 +8,8 @@
     <Folder Include="Context\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SearchEngine.Core\SearchEngine.Core.csproj" />
+  </ItemGroup>
+
 </Project>
