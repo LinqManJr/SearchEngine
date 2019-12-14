@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SearchEngine.Core.Engines;
 using SearchEngine.Domain.Context;
 
 namespace SearchEngine.WebApp
@@ -26,6 +27,8 @@ namespace SearchEngine.WebApp
         {
             var connectionString = Configuration.GetConnectionString("SEConnection");
             services.AddDbContext<SearchContext>(options => options.UseSqlServer(connectionString));
+
+            
 
             services.AddControllersWithViews();           
         }

@@ -2,7 +2,7 @@
 using SearchEngine.Core.Models;
 using System.Threading.Tasks;
 
-namespace SearchEngine.Core.Services
+namespace SearchEngine.WebApp.Services
 {
     public interface ISearchService
     {

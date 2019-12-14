@@ -8,4 +8,8 @@
     <PackageReference Include="Google.Apis.Customsearch.v1" Version="1.42.0.1369" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SearchEngine.Core\SearchEngine.Core.csproj" />
+    <ProjectReference Include="..\SearchEngine.WebApp\SearchEngine.WebApp.csproj" />
   </ItemGroup>
 
 </Project>
