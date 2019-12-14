@@ -2,7 +2,7 @@
 {
     public class YandexSearchOptions : SearchEngineOptions
     {
-        public YandexSearchOptions(string uri, string apikey, string username) : base(uri, apikey)
+        public YandexSearchOptions(string name, string uri, string apikey, string username) : base(name, uri, apikey)
         {
             Username = username;
         }

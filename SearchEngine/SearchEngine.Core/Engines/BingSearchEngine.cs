@@ -12,19 +12,24 @@ namespace SearchEngine.Core.Engines
     public class BingSearchEngine : ISearchEngine
     {
         private readonly SearchConfig _config;
+        private readonly SearchEngineOptions _options;        
 
         public BingSearchEngine(SearchConfig config)
         {
             _config = config;
         }       
+        public BingSearchEngine(SearchEngineOptions options)
+        {
+            _options = options;
+        }
         
 
         public SearchResult Search(string pattern)
         {
-            var uriQuery = _config.Url + "?q=" + Uri.EscapeDataString(pattern);
+            var uriQuery = _options.Uri + "?q=" + Uri.EscapeDataString(pattern);
             
             WebRequest request = WebRequest.Create(uriQuery);
-            request.Headers["Ocp-Apim-Subscription-Key"] = _config.ApiKey;
+            request.Headers["Ocp-Apim-Subscription-Key"] = _options.Apikey;
             try 
             { 
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -48,16 +53,16 @@ namespace SearchEngine.Core.Engines
             var results = from x in jObject["webPages"]["value"]
                           select new ItemResult((string)x["name"], (string)x["url"]);
 
-            return new SearchResult { CountResult = countResult, Results = results.ToList(), SearchTitle = _config.SearchEngine};
+            return new SearchResult { CountResult = countResult, Results = results.ToList(), SearchTitle = _options.Name};
         }
 
         public async Task<SearchResult> SearchAsync(string pattern)
         {
-            var uriQuery = _config.Url + "?q=" + Uri.EscapeDataString(pattern);
+            var uriQuery = _options.Uri + "?q=" + Uri.EscapeDataString(pattern);
             uriQuery = string.Concat(uriQuery, "&count=15");
 
             WebRequest request = WebRequest.Create(uriQuery);
-            request.Headers["Ocp-Apim-Subscription-Key"] = _config.ApiKey;
+            request.Headers["Ocp-Apim-Subscription-Key"] = _options.Apikey;
             try
             {
                 HttpWebResponse response = (HttpWebResponse) await request.GetResponseAsync();

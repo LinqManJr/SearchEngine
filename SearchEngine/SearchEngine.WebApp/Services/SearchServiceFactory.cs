@@ -19,7 +19,6 @@ namespace SearchEngine.WebApp.Services
         {
             var engines = new List<ISearchEngine>();
             var seconfigSection = _configuration.GetSection("EnginesConfig");
-            
             return engines;
         }
     }

@@ -9,17 +9,20 @@ namespace SearchEngine.Test
     public class BingSearchEngineTest
     {
         private SearchConfig _config;
+        private SearchEngineOptions _options;
         private ISearchEngine _engine;
         [SetUp]
         public void SetUp()
         {
-            _config = new SearchConfig { ApiKey = "", Url = "" };            
+            _config = new SearchConfig { ApiKey = "", Url = "" };
+            _options = new SearchEngineOptions("bing","https://api.cognitive.microsoft.com/bing/v7.0/search", "2efb912d79e84eb6820192d1805fb44b");
+            
         }
 
         [Test]
         public void ShouldReturnResult()
         {
-            _engine = new BingSearchEngine(_config);
+            _engine = new BingSearchEngine(_options);
             var result = _engine.Search("bing");
 
             Assert.IsNull(result.Error);
@@ -29,8 +32,8 @@ namespace SearchEngine.Test
         [Test]
         public void ShouldReturnErrorResult()
         {
-            _config.ApiKey = "2ef785999ce24554b5454343e32211";
-            _engine = new BingSearchEngine(_config);
+            _options.Apikey = "2ef785999ce24554b5454343e32211";
+            _engine = new BingSearchEngine(_options);
             var result = _engine.Search("bing");
 
             Assert.IsNotNull(result.Error);
@@ -40,7 +43,7 @@ namespace SearchEngine.Test
         [Test]
         public async Task ShouldReturnResultAsync()
         {
-            _engine = new BingSearchEngine(_config);
+            _engine = new BingSearchEngine(_options);
             var result = await _engine.SearchAsync("bing");
 
             Assert.IsNull(result.Error);
@@ -50,8 +53,8 @@ namespace SearchEngine.Test
         [Test]
         public async Task ShouldReturnErrorResultAsync()
         {
-            _config.ApiKey = "2ef785999ce24554b5454343e32211";
-            _engine = new BingSearchEngine(_config);
+            _options.Apikey = "2ef785999ce24554b5454343e32211";
+            _engine = new BingSearchEngine(_options);
             var result = await _engine.SearchAsync("bing");
 
             Assert.IsNotNull(result.Error);
