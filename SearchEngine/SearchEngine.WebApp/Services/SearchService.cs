@@ -15,6 +15,10 @@ namespace SearchEngine.WebApp.Services
         {
             _engines = engines;
         }
+        public SearchService(SearchServiceFactory seFactory)
+        {
+            _engines = seFactory.GetSearchEngines();
+        }
 
         public async Task<SearchResult> SearchInManyAsync(string pattern)
         {
