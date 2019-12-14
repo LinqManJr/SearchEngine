@@ -9,11 +9,11 @@ using SearchEngine.WebApp.Models;
 
 namespace SearchEngine.WebApp.Controllers
 {
-    public class HomeController : Controller
+    public class SearchController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<SearchController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public SearchController(ILogger<SearchController> logger)
         {
             _logger = logger;
         }
@@ -21,12 +21,7 @@ namespace SearchEngine.WebApp.Controllers
         public IActionResult Index()
         {
             return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        }        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
