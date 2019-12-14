@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
+using SearchEngine.Tests;
 using System.Threading.Tasks;
 
 namespace SearchEngine.Test
@@ -11,14 +12,14 @@ namespace SearchEngine.Test
         private GoogleSearchOptions _options;
         private ISearchEngine _searchEngine;
         public GoogleSearchEngineTest()
-        {           
-            _options = new GoogleSearchOptions("google", "", "AIzaSyB3ex6PDKCy54J92_1rB0q1TBn1jbv43SU", "012320430393294220051:cxnkugrhcjf");
+        {
+            _options = DefaultConfigs.GoogleOptions;
         }
 
         [SetUp]
         public void SetUp()
         {           
-            _options = new GoogleSearchOptions("google", "", "AIzaSyB3ex6PDKCy54J92_1rB0q1TBn1jbv43SU", "012320430393294220051:cxnkugrhcjf");
+            _options = DefaultConfigs.GoogleOptions;
             _searchEngine = new GoogleSearchEngine(_options);
         }
        

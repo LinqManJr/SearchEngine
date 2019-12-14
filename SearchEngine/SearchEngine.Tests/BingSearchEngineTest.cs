@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
+using SearchEngine.Tests;
 using System.Threading.Tasks;
 
 namespace SearchEngine.Test
@@ -12,9 +13,8 @@ namespace SearchEngine.Test
         private ISearchEngine _engine;
         [SetUp]
         public void SetUp()
-        {            
-            _options = new SearchEngineOptions("bing","https://api.cognitive.microsoft.com/bing/v7.0/search", "2efb912d79e84eb6820192d1805fb44b");
-            
+        {
+            _options = DefaultConfigs.BingOptions;            
         }
 
         [Test]

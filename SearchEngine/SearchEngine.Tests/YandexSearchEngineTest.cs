@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
+using SearchEngine.Tests;
 using System.Threading.Tasks;
 
 namespace SearchEngine.Test
@@ -11,8 +12,8 @@ namespace SearchEngine.Test
 
         [SetUp]
         public void Setup()
-        {            
-            _options = new YandexSearchOptions("yandex", "https://yandex.com/search/xml", "03.304041461:62374306f8f0c1938a6a26f0ce0511be", "johnybond32");
+        {
+            _options = DefaultConfigs.YaOptions;
         }
 
         [Test]
