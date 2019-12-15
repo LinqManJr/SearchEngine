@@ -30,10 +30,12 @@ namespace SearchEngine.WebApp
             var connectionString = Configuration.GetConnectionString("SEConnection");
             services.AddDbContext<SearchContext>(options => options.UseSqlServer(connectionString));
 
-            services.AddScoped<ISearchEngine, YandexSearchEngine>();
+            /*services.AddScoped<ISearchEngine, YandexSearchEngine>();
             services.AddScoped<ISearchEngine, GoogleSearchEngine>();
-            services.AddScoped<ISearchEngine, BingSearchEngine>();
+            services.AddScoped<ISearchEngine, BingSearchEngine>();*/
+
             services.AddScoped<SearchServiceFactory>();
+            services.AddScoped<ISearchService, SearchService>();
 
             services.AddControllersWithViews();           
         }

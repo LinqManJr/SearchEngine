@@ -53,7 +53,7 @@ namespace SearchEngine.Core.Engines
         public async Task<SearchResult> SearchAsync(string pattern)
         {
             var uriQuery = _options.Uri + "?q=" + Uri.EscapeDataString(pattern);
-            uriQuery = string.Concat(uriQuery, "&count=15");
+            uriQuery = string.Concat(uriQuery, "&count=10");
 
             WebRequest request = WebRequest.Create(uriQuery);
             request.Headers["Ocp-Apim-Subscription-Key"] = _options.Apikey;

@@ -1,7 +1,30 @@
 ﻿@{
     ViewData["Title"] = "SearchEngine App";
+
+}
+@model SearchEngine.Core.Models.SearchResult
+
+<form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="inputWord" class="sr-only">Search</label>
+        <input type="text" class="form-control" id="inputWord" placeholder="Type any ...">
+    </div>
+    <button class="btn btn-primary mb-2" id="btnResult">Try</button>
+</form>
+<div id="partialResult">
+
+</div>
+@section Scripts {
+    <script>
+
+    $(document).ready(function () {
+
+        $("#btnResult").click(function () {
+            alert('fuck');
+            $("#partialResult").load('@Url.Content("/Search/Results")');
+        });
+
+    });
+    </script>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>    
-</div>

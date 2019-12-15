@@ -20,13 +20,13 @@ namespace SearchEngine.WebApp.Services
             var engines = new List<ISearchEngine>();
             var sections = _configuration.GetSection("EnginesConfig").GetChildren().ToList();
 
-            var ya = sections.First(x => x.Key == "Yandex").Get<YandexSearchOptions>();
+           // var ya = sections.First(x => x.Key == "Yandex").Get<YandexSearchOptions>();
             var google = sections.First(x => x.Key == "Google").Get<GoogleSearchOptions>();
             var bing = sections.First(x => x.Key == "Bing").Get<SearchEngineOptions>();
 
             engines.AddRange(new List<ISearchEngine> 
             { 
-                new YandexSearchEngine(ya),
+                //new YandexSearchEngine(ya),
                 new GoogleSearchEngine(google),
                 new BingSearchEngine(bing)
             });

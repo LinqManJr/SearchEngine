@@ -6,27 +6,31 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SearchEngine.WebApp.Models;
+using SearchEngine.WebApp.Services;
 
 namespace SearchEngine.WebApp.Controllers
 {
     public class SearchController : Controller
     {
         private readonly ILogger<SearchController> _logger;
+        private readonly ISearchService _searchService;
 
-        public SearchController(ILogger<SearchController> logger)
+        public SearchController(ILogger<SearchController> logger, ISearchService searchService)
         {
             _logger = logger;
+            _searchService = searchService;
         }
 
         public IActionResult Index()
-        {
+        {            
             return View();
-        }        
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Results(string word = "2pac")
+        {
+            var result = await _searchService.SearchInManyAsync(word);
+            return PartialView("_PartialResult", result);
+        }        
     }
 }
