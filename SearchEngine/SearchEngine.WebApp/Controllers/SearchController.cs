@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SearchEngine.WebApp.Models;
 using SearchEngine.WebApp.Services;
 
 namespace SearchEngine.WebApp.Controllers
@@ -26,11 +21,10 @@ namespace SearchEngine.WebApp.Controllers
             return View();
         }        
         
-        public async Task<IActionResult> Results(string word = "someword")
+        public async Task<IActionResult> Results(string word = "murana")
         {
             var result = await _searchService.SearchInManyAsync(word);
-            return PartialView("_SearchPartial", result);
-            //return PartialView("_PartialResult.cshtml", result);
+            return PartialView("_SearchPartial", result);            
         }        
     }
 }
