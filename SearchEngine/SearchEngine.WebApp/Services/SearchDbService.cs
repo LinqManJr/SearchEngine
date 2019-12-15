@@ -1,4 +1,5 @@
-﻿using SearchEngine.Core.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SearchEngine.Core.Models;
 using SearchEngine.Domain.Context;
 using SearchEngine.Domain.Models;
 using System;
@@ -29,6 +30,16 @@ namespace SearchEngine.WebApp.Services
 
             await _context.Requests.AddAsync(request);
             await _context.SaveChangesAsync();            
+        }
+
+        public async Task<IEnumerable<Request>> GetRequests()
+        {
+            return await _context.Requests.Include(r => r.Results).ToListAsync(); // to ListAsync убрать
+        }
+
+        public async Task<IEnumerable<Request>> GetRequestsByEngine(string engine)
+        {
+            return await _context.Requests.Where(x => x.Engine == engine).Include(r => r.Results).ToListAsync();
         }
     }
 }
