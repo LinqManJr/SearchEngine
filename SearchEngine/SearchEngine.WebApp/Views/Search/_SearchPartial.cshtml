@@ -6,6 +6,18 @@
     <h5>@Model.SearchTitle</h5>
     <h5>All matches: @Model.CountResult</h5>
 </div>
+@if (@Model.Error != null)
+{
+    <div class="list-group">
+        <div class="list-group-item-warning">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">@Model.Error.Title</h5>
+                <small>@Model.Error.Description</small>
+            </div>
+        </div>
+    </div>
+    return;
+}
 @foreach (var m in Model.Results)
 {
     <div class="list-group">
