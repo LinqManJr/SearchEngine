@@ -36,6 +36,7 @@ namespace SearchEngine.WebApp
 
             services.AddScoped<SearchServiceFactory>();
             services.AddScoped<ISearchService, SearchService>();
+            services.AddScoped<IDatabaseService, SearchDbService>();
 
             services.AddControllersWithViews();           
         }
