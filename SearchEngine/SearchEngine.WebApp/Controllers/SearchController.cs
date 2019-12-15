@@ -24,13 +24,13 @@ namespace SearchEngine.WebApp.Controllers
         public IActionResult Index()
         {            
             return View();
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Results(string word = "2pac")
+        }        
+        
+        public async Task<IActionResult> Results(string word = "someword")
         {
             var result = await _searchService.SearchInManyAsync(word);
-            return PartialView("_PartialResult", result);
+            return PartialView("_SearchPartial", result);
+            //return PartialView("_PartialResult.cshtml", result);
         }        
     }
 }

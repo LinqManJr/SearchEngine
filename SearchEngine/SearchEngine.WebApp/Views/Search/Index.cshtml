@@ -9,22 +9,32 @@
         <label for="inputWord" class="sr-only">Search</label>
         <input type="text" class="form-control" id="inputWord" placeholder="Type any ...">
     </div>
-    <button class="btn btn-primary mb-2" id="btnResult">Try</button>
+    <input type="button" class="btn btn-primary mb-2" id="btnResult" value="Try" />
 </form>
-<div id="partialResult">
-
+<div id="partial">    
 </div>
 @section Scripts {
-    <script>
+    <script>   
 
-    $(document).ready(function () {
-
-        $("#btnResult").click(function () {
-            alert('fuck');
-            $("#partialResult").load('@Url.Content("/Search/Results")');
-        });
-
+    /*$('#btnResult').on('click', function (e) {        
+        GetResults();
     });
+
+        function GetResult() {
+            $.ajax({
+                url: '/Search/Results',
+                type: 'POST',
+                cache: false,
+                async: true,
+                dataType: "html",
+                data: '2pac'
+            })
+                .done(function (result) {
+                    $('#partial').html(result);
+                }).fail(function (xhr) {
+                    console.log('error : ' + xhr.status + ' - ' + xhr.statusText + ' - ' + xhr.responseText);
+                });
+        }*/
     </script>
 }
 

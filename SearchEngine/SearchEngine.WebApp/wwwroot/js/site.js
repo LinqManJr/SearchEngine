@@ -1,4 +1,10 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function () {
 
-// Write your JavaScript code.
+    $("#btnResult").click(function () {
+        let value = $("#inputWord").val();
+        console.log(value);
+        $("#partial").load('/Search/Results', {word:value});
+    });
+    //TODO: check response and throw error popup
+
+});
