@@ -23,7 +23,7 @@ namespace SearchEngine.WebApp.Controllers
             return View();
         }        
         
-        public async Task<IActionResult> Results(string word = "murana")
+        public async Task<IActionResult> Results(string word = "nginx")
         {
             var requestResult = await _searchService.SearchInManyAsync(word);
             await _dbService.AddRequestToDb(requestResult, word);
