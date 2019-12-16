@@ -42,5 +42,7 @@ namespace SearchEngine.WebApp.Services
         {
             return await _context.Requests.Where(x => x.Engine == engine).Include(r => r.Result).ToListAsync();
         }
+
+        public async Task<Result> GetResultById(int id) => await _context.Results.FirstOrDefaultAsync(x => x.Id == id);
     }
 }

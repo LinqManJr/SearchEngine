@@ -12,5 +12,6 @@ namespace SearchEngine.WebApp.Services
         Task AddRequestToDb(SearchResult searchresult, string word);
         Task<IEnumerable<Request>> GetRequests();
         Task<IEnumerable<Request>> GetRequestsByEngine(string engine);
+        Task<Result> GetResultById(int id);
     }
 }
