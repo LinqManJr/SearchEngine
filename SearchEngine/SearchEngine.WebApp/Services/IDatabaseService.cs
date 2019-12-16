@@ -1,5 +1,6 @@
 ﻿using SearchEngine.Core.Models;
 using SearchEngine.Domain.Models;
+using SearchEngine.WebApp.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace SearchEngine.WebApp.Services
         Task<IEnumerable<Request>> GetRequests();
         Task<IEnumerable<Request>> GetRequestsByEngine(string engine);
         Task<Result> GetResultById(int id);
+        IEnumerable<SearchWordDto> GetWords();
     }
 }

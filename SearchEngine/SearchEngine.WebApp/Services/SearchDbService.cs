@@ -2,7 +2,8 @@
 using SearchEngine.Core.Models;
 using SearchEngine.Domain.Context;
 using SearchEngine.Domain.Models;
-using System;
+using SearchEngine.WebApp.Dto;
+using SearchEngine.WebApp.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,5 +45,11 @@ namespace SearchEngine.WebApp.Services
         }
 
         public async Task<Result> GetResultById(int id) => await _context.Results.FirstOrDefaultAsync(x => x.Id == id);
+
+        public IEnumerable<SearchWordDto> GetWords()
+        {
+            var words = _context.Requests.Select(x => new SearchWordDto { Id = x.Id, Word = x.SearchWord }).DistinctBy(p => p.Word);
+            return words;
+        }
     }
 }

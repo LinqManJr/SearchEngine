@@ -5,8 +5,18 @@
 }
 
 <h1>Search In DataBase</h1>
+<hr />
 <div class="filter">
-
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">            
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">                
+                <select class="form-control"
+                        asp-items="@(new SelectList(@ViewBag.Words,"Id", "Word"))">
+                </select>
+            </div> 
+        </div>
+        <input type="button" class="btn btn-primary mb-2" id="btnDbResult" value="Filter" />
+    </form>
 </div>
 
 <div class="container">

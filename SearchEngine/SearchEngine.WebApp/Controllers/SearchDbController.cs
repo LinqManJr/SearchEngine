@@ -19,6 +19,7 @@ namespace SearchEngine.WebApp.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.WordsCollection = _dbService.GetWords();
             var result = await _dbService.GetRequests();
             return View(result);
         }
@@ -30,6 +31,6 @@ namespace SearchEngine.WebApp.Controllers
             if(details != null)
                 return PartialView("_DetailsModal", details);
             return NotFound();
-        }
+        }        
     }
 }
