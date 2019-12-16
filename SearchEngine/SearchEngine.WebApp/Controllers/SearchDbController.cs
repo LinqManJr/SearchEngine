@@ -33,5 +33,11 @@ namespace SearchEngine.WebApp.Controllers
                 return PartialView("_DetailsModal", details);
             return NotFound();
         }        
+
+        public async Task<IActionResult> FilterByWord(string word)
+        {
+            var requests = 
+            return PartialView("_ResultView",);
+        }
     }
 }

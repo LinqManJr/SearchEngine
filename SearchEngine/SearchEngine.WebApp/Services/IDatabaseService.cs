@@ -1,9 +1,7 @@
 ﻿using SearchEngine.Core.Models;
 using SearchEngine.Domain.Models;
 using SearchEngine.WebApp.Dto;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SearchEngine.WebApp.Services
@@ -12,8 +10,10 @@ namespace SearchEngine.WebApp.Services
     {
         Task AddRequestToDb(SearchResult searchresult, string word);
         Task<IEnumerable<Request>> GetRequests();
+        Task<IEnumerable<Request>> GetRequestsByWord(string word);
         Task<IEnumerable<Request>> GetRequestsByEngine(string engine);
         Task<Result> GetResultById(int id);
+        
         IEnumerable<SearchWordDto> GetWords();
     }
 }
