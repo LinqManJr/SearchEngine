@@ -35,7 +35,7 @@ namespace SearchEngine.WebApp.Services
 
         public async Task<IEnumerable<Request>> GetRequests()
         {
-            return await _context.Requests.Include(r => r.Result).ToListAsync(); // to ListAsync убрать
+            return await _context.Requests.Include(r => r.Result).ToListAsync();
         }
 
         public async Task<IEnumerable<Request>> GetRequestsByEngine(string engine)

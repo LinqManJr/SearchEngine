@@ -1,8 +1,37 @@
-﻿
+﻿@model IEnumerable<Request>
 @{
     ViewData["Title"] = "Search In Database";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";    
 }
 
 <h1>Search In DataBase</h1>
+<div class="filter">
+
+</div>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Engine</th>
+                <th>SearchWord</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+            {
+            <tr>
+                <td>@m.Id</td>
+                <td>@m.Date</td>
+                <td>@m.Engine</td>
+                <td>@m.SearchWord</td>
+                <td>@m.Result.ItemsCount</td>
+            </tr>
+            }
+        </tbody>
+        </table>
+</div>
 
