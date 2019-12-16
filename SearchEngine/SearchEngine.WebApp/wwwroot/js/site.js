@@ -5,6 +5,11 @@
         console.log(value);
         $("#partial").load('/Search/Results', {word:value});
     });
-    //TODO: check response and throw error popup
+
+    $("#linkDetails").click(function () {   
+        alert("fg");
+        $("#dialogData").load('SearchDb/Details/1');
+        $("#modal").modal('show');
+    });
 
 });

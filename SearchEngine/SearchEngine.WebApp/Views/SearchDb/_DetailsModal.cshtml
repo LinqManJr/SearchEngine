@@ -1,4 +1,17 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Result
+
+    <div class="modal-content">
+        <div class="modal-body">
+            @foreach (var m in Model.Items)
+            {
+                <div class="list-group">
+                    <div class="list-group-item ">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">@m.SiteTitle</h5>
+                            <small><a href="@m.ActionLink">@m.ActionLink</a></small>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>

@@ -26,7 +26,10 @@ namespace SearchEngine.WebApp.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var details = await _dbService.GetResultById(id);
-            return PartialView("_DetailsModal", details);
+
+            if(details != null)
+                return PartialView("_DetailsModal", details);
+            return NotFound();
         }
     }
 }
