@@ -6,10 +6,15 @@
         $("#partial").load('/Search/Results', {word:value});
     });
 
-    $("#linkDetails").click(function () {   
-        alert("fg");
-        $("#dialogData").load('SearchDb/Details/1');
-        $("#modal").modal('show');
-    });
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".linkDetails").click(function (e) {
+            e.preventDefault();
+            $.get(this.href, function (data) {
+                $('#dialogContent').html(data);
+                $('#modDialog').modal('show');
+            });
+        });
+    })
 
 });
