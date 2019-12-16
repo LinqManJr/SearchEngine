@@ -39,10 +39,15 @@ namespace SearchEngine.WebApp.Services
             return await _context.Requests.Include(r => r.Result).ToListAsync();
         }
 
+        public async Task<IEnumerable<Request>> GetRequestsByWord(string word)
+        {
+            return await _context.Requests.Where(x => x.SearchWord == word).Include(r => r.Result).ToListAsync();
+        }
+
         public async Task<IEnumerable<Request>> GetRequestsByEngine(string engine)
         {
             return await _context.Requests.Where(x => x.Engine == engine).Include(r => r.Result).ToListAsync();
-        }
+        }        
 
         public async Task<Result> GetResultById(int id) => await _context.Results.FirstOrDefaultAsync(x => x.Id == id);
 

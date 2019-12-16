@@ -36,8 +36,8 @@ namespace SearchEngine.WebApp.Controllers
 
         public async Task<IActionResult> FilterByWord(string word)
         {
-            var requests = 
-            return PartialView("_ResultView",);
+            var requests = await _dbService.GetRequestsByWord(word);
+            return PartialView("_ResultView", requests);
         }
     }
 }
