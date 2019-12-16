@@ -38,17 +38,27 @@
                     <td>@m.Engine</td>
                     <td>@m.SearchWord</td>
                     <td>@m.Result.ItemsCount</td>
-                    <td>@Html.ActionLink("Details", "Details", new { id = @m.Id }, new { @class = "linkDetails" })</td>
+                    <td>@Html.ActionLink("Details", "Details", new { id = @m.Id }, new { @class = "linkDetails"})</td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-<div class="modal fade" id="modal">
-    <div class="modal-dialog" id="dialogData"></div>
+<div class="modal fade" id="modDialog">
+    <div class="modal-dialog" id="dialogContent"></div>
 </div>
 @section Scripts {
-    <script>        
+    <script>           
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".linkDetails").click(function (e) {
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
     </script>
 }
 
