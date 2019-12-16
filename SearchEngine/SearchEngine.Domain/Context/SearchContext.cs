@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SearchEngine.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 
 namespace SearchEngine.Domain.Context
 {
@@ -14,9 +10,9 @@ namespace SearchEngine.Domain.Context
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
-        {            
-            builder.ApplyConfiguration(new ResultConfiguration());
-            //builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); \\add all configurations
+        {
+            builder.Entity<Request>().Property(d => d.Date).HasDefaultValueSql("getdate()");
+            builder.ApplyConfiguration(new ResultConfiguration());            
         }
 
         public DbSet<Request> Requests { get; set; }

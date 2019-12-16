@@ -19,16 +19,17 @@ namespace SearchEngine.WebApp.Services
         }
         public async Task AddRequestToDb(SearchResult searchresult, string word)
         {
-            //TODO: DateTime in db must default get value
+            
             //TODO: add DTO with searching word and searchresult
-            //TODO: do we need ResultId
-            /*var request = new Request { Date = DateTime.Now, SearchWord = word, Engine = searchresult.SearchTitle, 
-                                        Results = new List<Result> 
-                                        { 
-                                            new Result { ItemsCount = searchresult.Results.Count, Items = searchresult.Results } } 
-                                        };
+            
+            var request = new Request
+            {                
+                SearchWord = word,
+                Engine = searchresult.SearchTitle,
+                Result = new Result { ItemsCount = searchresult.Results.Count, Items = searchresult.Results }
+            };
 
-            await _context.Requests.AddAsync(request);*/
+            await _context.Requests.AddAsync(request);
             await _context.SaveChangesAsync();            
         }
 
