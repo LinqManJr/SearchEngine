@@ -8,6 +8,20 @@ namespace SearchEngine.Domain.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Results",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ItemsCount = table.Column<int>(nullable: false),
+                    Items = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Results", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Requests",
                 columns: table => new
                 {
@@ -21,42 +35,27 @@ namespace SearchEngine.Domain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Requests", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Results",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemsCount = table.Column<int>(nullable: false),
-                    RequestId = table.Column<int>(nullable: true),
-                    Items = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Results", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Results_Requests_RequestId",
-                        column: x => x.RequestId,
-                        principalTable: "Requests",
+                        name: "FK_Requests_Results_ResultId",
+                        column: x => x.ResultId,
+                        principalTable: "Results",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Results_RequestId",
-                table: "Results",
-                column: "RequestId");
+                name: "IX_Requests_ResultId",
+                table: "Requests",
+                column: "ResultId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Results");
+                name: "Requests");
 
             migrationBuilder.DropTable(
-                name: "Requests");
+                name: "Results");
         }
     }
 }

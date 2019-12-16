@@ -7,7 +7,7 @@ namespace SearchEngine.Domain.Models
     {
         public int Id { get; set; }
         public int ItemsCount { get; set; }
-        public Request Request { get; set; }
+        public virtual IList<Request> Requests { get; set; }
         public IList<ItemResult> Items { get; set; }
 
     }

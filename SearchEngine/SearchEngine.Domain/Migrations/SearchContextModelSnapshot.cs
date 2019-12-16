@@ -40,6 +40,8 @@ namespace SearchEngine.Domain.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ResultId");
+
                     b.ToTable("Requests");
                 });
 
@@ -56,21 +58,18 @@ namespace SearchEngine.Domain.Migrations
                     b.Property<int>("ItemsCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RequestId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RequestId");
 
                     b.ToTable("Results");
                 });
 
-            modelBuilder.Entity("SearchEngine.Domain.Models.Result", b =>
+            modelBuilder.Entity("SearchEngine.Domain.Models.Request", b =>
                 {
-                    b.HasOne("SearchEngine.Domain.Models.Request", "Request")
-                        .WithMany("Results")
-                        .HasForeignKey("RequestId");
+                    b.HasOne("SearchEngine.Domain.Models.Result", "Result")
+                        .WithMany("Requests")
+                        .HasForeignKey("ResultId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

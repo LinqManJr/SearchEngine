@@ -22,24 +22,24 @@ namespace SearchEngine.WebApp.Services
             //TODO: DateTime in db must default get value
             //TODO: add DTO with searching word and searchresult
             //TODO: do we need ResultId
-            var request = new Request { Date = DateTime.Now, SearchWord = word, Engine = searchresult.SearchTitle, 
+            /*var request = new Request { Date = DateTime.Now, SearchWord = word, Engine = searchresult.SearchTitle, 
                                         Results = new List<Result> 
                                         { 
                                             new Result { ItemsCount = searchresult.Results.Count, Items = searchresult.Results } } 
                                         };
 
-            await _context.Requests.AddAsync(request);
+            await _context.Requests.AddAsync(request);*/
             await _context.SaveChangesAsync();            
         }
 
         public async Task<IEnumerable<Request>> GetRequests()
         {
-            return await _context.Requests.Include(r => r.Results).ToListAsync(); // to ListAsync убрать
+            return await _context.Requests.Include(r => r.Result).ToListAsync(); // to ListAsync убрать
         }
 
         public async Task<IEnumerable<Request>> GetRequestsByEngine(string engine)
         {
-            return await _context.Requests.Where(x => x.Engine == engine).Include(r => r.Results).ToListAsync();
+            return await _context.Requests.Where(x => x.Engine == engine).Include(r => r.Result).ToListAsync();
         }
     }
 }

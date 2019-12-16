@@ -10,6 +10,6 @@ namespace SearchEngine.Domain.Models
         public string Engine { get; set; }
         public string SearchWord { get; set; }
         public int ResultId { get; set; }
-        public virtual IList<Result> Results { get; set; }
+        public virtual Result Result { get; set; }
     }
 }
