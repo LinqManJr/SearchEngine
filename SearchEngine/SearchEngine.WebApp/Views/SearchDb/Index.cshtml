@@ -10,7 +10,7 @@
     <form class="form-inline">
         <div class="form-group mx-sm-3 mb-2">            
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">                
-                @Html.DropDownList("wordId",ViewBag.WordsCollection as SelectList, "..Select..",new { @class="form-control" })
+                @Html.DropDownList("wordId",ViewBag.WordsCollection as SelectList, "..Select..",new { @class="form-control", @id="dropDownWord" })
             </div> 
         </div>
         <input type="button" class="btn btn-primary mb-2" id="btnDbResult" value="Filter" />
@@ -24,7 +24,15 @@
     <div class="modal-dialog" id="dialogContent"></div>
 </div>
 @section Scripts {
-    <script>      
+    <script>  
+        $(document).ready(function () {            
+
+            $("#btnDbResult").click(function () {
+                let value = $("#dropDownWord :selected").text();
+                $("#partial").load('/SearchDb/FilterByWord', { word: value });
+            });            
+
+        });
     </script>
 }
 

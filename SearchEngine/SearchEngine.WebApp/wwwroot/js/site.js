@@ -1,9 +1,13 @@
 ﻿$(document).ready(function () {
 
     $("#btnResult").click(function () {
-        let value = $("#inputWord").val();
-        console.log(value);
+        let value = $("#inputWord").val();        
         $("#partial").load('/Search/Results', {word:value});
+    });
+
+    $("#btnDbResult").click(function () {
+        let value = $("#dropDownWord :selected").text();        
+        $("#partial").load('/SearchDb/FilterByWord', { word: value });
     });
 
     $(function () {
