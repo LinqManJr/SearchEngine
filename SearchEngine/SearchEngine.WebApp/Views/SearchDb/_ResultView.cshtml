@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Request>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Engine</th>
+            <th>SearchWord</th>
+            <th>Count</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Id</td>
+                <td>@m.Date</td>
+                <td>@m.Engine</td>
+                <td>@m.SearchWord</td>
+                <td>@m.Result.ItemsCount</td>
+                <td>@Html.ActionLink("Details", "Details", new { id = @m.Id }, new { @class = "linkDetails" })</td>
+            </tr>
+        }
+    </tbody>
+</table>
