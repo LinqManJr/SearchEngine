@@ -17,22 +17,14 @@
     </form>
 </div>
 
-<div class="container">
+<div class="container" id="tableResult">
     @await Html.PartialAsync("_ResultView", Model)
 </div>
 <div class="modal fade" id="modDialog">
     <div class="modal-dialog" id="dialogContent"></div>
 </div>
 @section Scripts {
-    <script>  
-        $(document).ready(function () {            
-
-            $("#btnDbResult").click(function () {
-                let value = $("#dropDownWord :selected").text();
-                $("#partial").load('/SearchDb/FilterByWord', { word: value });
-            });            
-
-        });
+    <script>         
     </script>
 }
 

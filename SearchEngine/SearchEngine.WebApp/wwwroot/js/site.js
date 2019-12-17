@@ -1,15 +1,18 @@
 ﻿$(document).ready(function () {
 
+    //results ajax
     $("#btnResult").click(function () {
         let value = $("#inputWord").val();        
         $("#partial").load('/Search/Results', {word:value});
     });
 
+    //filter ajax
     $("#btnDbResult").click(function () {
         let value = $("#dropDownWord :selected").text();        
-        $("#partial").load('/SearchDb/FilterByWord', { word: value });
+        $("#tableResult").load('/SearchDb/FilterByWord', { word: value });
     });
 
+    //details ajax
     $(function () {
         $.ajaxSetup({ cache: false });
         $(".linkDetails").click(function (e) {
