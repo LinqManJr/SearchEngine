@@ -21,7 +21,7 @@ namespace SearchEngine.Test
         public void ShouldReturnResult()
         {
             _engine = new BingSearchEngine(_options);
-            var result = _engine.Search("bing");
+            var result = _engine.Search("nginx");
 
             Assert.IsNull(result.Error);
             Assert.That(result.Results.Count > 0);
@@ -32,7 +32,7 @@ namespace SearchEngine.Test
         {
             _options.Apikey = "2ef785999ce24554b5454343e32211";
             _engine = new BingSearchEngine(_options);
-            var result = _engine.Search("bing");
+            var result = _engine.Search("nginx");
 
             Assert.IsNotNull(result.Error);
             Assert.That(result.Error.Title == "ProtocolError");
@@ -42,7 +42,7 @@ namespace SearchEngine.Test
         public async Task ShouldReturnResultAsync()
         {
             _engine = new BingSearchEngine(_options);
-            var result = await _engine.SearchAsync("bing");
+            var result = await _engine.SearchAsync("nginx");
 
             Assert.IsNull(result.Error);
             Assert.That(result.Results.Count > 0);
@@ -53,7 +53,7 @@ namespace SearchEngine.Test
         {
             _options.Apikey = "2ef785999ce24554b5454343e32211";
             _engine = new BingSearchEngine(_options);
-            var result = await _engine.SearchAsync("bing");
+            var result = await _engine.SearchAsync("nginx");
 
             Assert.IsNotNull(result.Error);
             Assert.That(result.Error.Title == "ProtocolError");

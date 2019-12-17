@@ -26,7 +26,7 @@ namespace SearchEngine.Test
         [Test]
         public void ShouldReturnSearchResult()
         {            
-            var result = _searchEngine.Search("google");
+            var result = _searchEngine.Search("nginx");
                         
             Assert.IsNull(result.Error);
             Assert.IsTrue(result.Results.Count > 0);
@@ -39,7 +39,7 @@ namespace SearchEngine.Test
             _options.Apikey = "AIzaSyB3fx6PDKCy54J92_1rB011TBn1jbv43SU";
 
             _searchEngine = new GoogleSearchEngine(_options);
-            var result = _searchEngine.Search("yandex");
+            var result = _searchEngine.Search("nginx");
 
             Assert.That(result.Error != null);
             Assert.AreEqual(result.Error.Title, "BadRequest");
@@ -53,7 +53,7 @@ namespace SearchEngine.Test
             _options.AppId = "hjkhj32423bkj5jkb3b5jT";
 
             _searchEngine = new GoogleSearchEngine(_options);
-            var result = _searchEngine.Search("yandex");
+            var result = _searchEngine.Search("nginx");
 
             Assert.That(result.Error != null);
             Assert.AreEqual(result.Error.Title, "NotFound");
@@ -63,7 +63,7 @@ namespace SearchEngine.Test
         [Test]
         public async Task ShouldReturnSearchResultAsync()
         {
-            var result = await _searchEngine.SearchAsync("yandex");
+            var result = await _searchEngine.SearchAsync("nginx");
 
             Assert.IsNull(result.Error);
             Assert.IsTrue(result.Results.Count >  0);

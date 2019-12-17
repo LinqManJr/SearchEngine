@@ -34,7 +34,7 @@ namespace SearchEngine.Test
         public async Task ShouldReturnFirstExecTask()
         {
             var searchService = new SearchService(_bingEngine, _googleEngine);
-            var result = await searchService.SearchInManyAsync("yandex");
+            var result = await searchService.SearchInManyAsync("nginx");
             
             Assert.That(result.Error == null);
         }

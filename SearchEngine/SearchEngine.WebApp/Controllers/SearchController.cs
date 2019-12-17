@@ -23,10 +23,11 @@ namespace SearchEngine.WebApp.Controllers
             return View();
         }        
         
-        public async Task<IActionResult> Results(string word = "nginx")
+        public async Task<IActionResult> Results(string word)
         {
             var requestResult = await _searchService.SearchInManyAsync(word);
-            await _dbService.AddRequestToDb(requestResult, word);
+            if(requestResult.Error == null)
+                await _dbService.AddRequestToDb(requestResult, word);
 
             return PartialView("_SearchPartial", requestResult);            
         }        

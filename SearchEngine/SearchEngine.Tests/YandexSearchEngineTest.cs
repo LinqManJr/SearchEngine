@@ -20,7 +20,7 @@ namespace SearchEngine.Test
         public void ShouldReturnResult()
         {
             var searchEngine = new YandexSearchEngine(_options);
-            var result = searchEngine.Search("yandex");
+            var result = searchEngine.Search("nginx");
 
             Assert.IsNull(result.Error);
             Assert.IsTrue(result.Results.Count > 0);
@@ -31,7 +31,7 @@ namespace SearchEngine.Test
         {
             _options.Uri = "https://yandex.ru/search/xml";
             var searchEngine = new YandexSearchEngine(_options);
-            var result = searchEngine.Search("yandex");
+            var result = searchEngine.Search("nginx");
 
             Assert.IsNotNull(result.Error);
             Assert.That(result.Error.Title == "Error Code is 48");
@@ -44,7 +44,7 @@ namespace SearchEngine.Test
         {
             _options.Apikey = "03.304041461:62374326f8f0c193806a26f0cc0511be";
             var searchEngine = new YandexSearchEngine(_options);
-            var result = searchEngine.Search("yandex");
+            var result = searchEngine.Search("nginx");
 
             Assert.IsNotNull(result.Error);
             Assert.That(result.Error.Title == "Error Code is 42");
@@ -55,7 +55,7 @@ namespace SearchEngine.Test
         public async Task ShouldReturnResultAsync()
         {
             var searchEngine = new YandexSearchEngine(_options);
-            var result = await searchEngine.SearchAsync("yandex");
+            var result = await searchEngine.SearchAsync("nginx");
 
             Assert.IsNull(result.Error);
             Assert.IsTrue(result.Results.Count > 0);
