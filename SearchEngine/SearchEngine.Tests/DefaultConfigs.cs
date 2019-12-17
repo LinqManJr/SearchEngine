@@ -13,7 +13,7 @@ namespace SearchEngine.Tests
 
         public static SearchEngineOptions BingOptions => new SearchEngineOptions { Name = "bing", Uri = "https://api.cognitive.microsoft.com/bing/v7.0/search", Apikey = "2efb912d79e84eb6820192d1805fb44b"};
 
-        public static IEnumerable<ItemResult> GetDefaultItemsOfResult => new List<ItemResult>
+        public static IList<ItemResult> GetDefaultItemsOfResult => new List<ItemResult>
         {
             new ItemResult("title1","link1"),
             new ItemResult("title2","link2"),

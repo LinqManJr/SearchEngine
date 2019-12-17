@@ -28,10 +28,18 @@ namespace SearchEngine.Tests.Services
         public async Task ShouldAddSearchResultToDataBase()
         {
             var word = "Some Word";
-            var result = new SearchResult {CountResult = 10000, SearchTitle = word, Error = null, Results = };
+            var countBefore = await _context.Requests.CountAsync();
+            var result = new SearchResult 
+            {   
+                CountResult = 10000, 
+                SearchTitle = word, 
+                Error = null, 
+                Results = DefaultConfigs.GetDefaultItemsOfResult
+            };
 
             await  _dbService.AddRequestToDb(result, word);
-            Assert.
+
+            Assert.That(countBefore < await _context.Requests.CountAsync());
         }
     }
 }
