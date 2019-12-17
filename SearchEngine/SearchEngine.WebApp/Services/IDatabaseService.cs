@@ -10,8 +10,7 @@ namespace SearchEngine.WebApp.Services
     {
         Task AddRequestToDb(SearchResult searchresult, string word);
         Task<IEnumerable<Request>> GetRequests();
-        Task<IEnumerable<Request>> GetRequestsByWord(string word);
-        Task<IEnumerable<Request>> GetRequestsByEngine(string engine);
+        Task<IEnumerable<Request>> GetRequestsByWord(string word);        
         Task<Result> GetResultById(int id);
         
         IEnumerable<SearchWordDto> GetWords();
