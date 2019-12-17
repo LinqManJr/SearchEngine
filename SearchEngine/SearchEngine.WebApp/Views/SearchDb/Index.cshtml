@@ -8,12 +8,18 @@
 <hr />
 <div class="filter">
     <form class="form-inline">
-        <div class="form-group mx-sm-3 mb-2">            
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">                
-                @Html.DropDownList("wordId",ViewBag.WordsCollection as SelectList, "..Select..",new { @class="form-control", @id="dropDownWord" })
-            </div> 
+        <label>Search by word </label>
+        <div class="form-group mx-sm-3 mb-2">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                @Html.DropDownList("wordId", ViewBag.WordsCollection as SelectList, "..Select..", new { @class = "form-control", @id = "dropDownWord" })
+            </div>
         </div>
-        <input type="button" class="btn btn-primary mb-2" id="btnDbResult" value="Filter" />
+        <input type="button" class="btn btn-primary mb-2" id="btnDbResult" value="Apply" />
+        <div class="form-group mx-sm-3 mb-2">
+            <a asp-area="" asp-controller="SearchDb" asp-action="Index" id="dbClear">
+                <input type="button" class="btn btn-outline-secondary" value="Clear" />
+            </a>
+        </div>     
     </form>
 </div>
 

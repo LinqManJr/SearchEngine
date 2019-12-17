@@ -10,7 +10,7 @@
     $("#btnDbResult").click(function () {
         let value = $("#dropDownWord :selected").text();        
         $("#tableResult").load('/SearchDb/FilterByWord', { word: value });
-    });
+    });    
 
     //details ajax
     $(function () {
