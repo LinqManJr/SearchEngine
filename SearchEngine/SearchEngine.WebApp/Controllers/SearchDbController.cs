@@ -27,6 +27,7 @@ namespace SearchEngine.WebApp.Controllers
 
             if(details != null)
                 return PartialView("_DetailsModal", details);
+
             return NotFound();
         }        
 
