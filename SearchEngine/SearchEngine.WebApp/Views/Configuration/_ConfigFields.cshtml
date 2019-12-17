@@ -1,12 +1,11 @@
 ﻿@model Dictionary<string,string>
 
-<form method="post">
+<form method="post" asp-controller="Configuration" asp-action="Save">
     @foreach(var pair in Model)
-    {        
-        <div class="form-group">
-            <label for="@pair.Key">@pair.Key</label>
-            <input type="text" class="form-control" id="@pair.Key" value="@pair.Value" />
-        </div>        
+    {              
+        <input type="text" hidden name="SectionName" value="@ViewBag.SectionName"/>
+        <label for="@pair.Key">@pair.Key</label>
+        <input type="text" class="form-control" name="@pair.Key" value="@pair.Value" />                
     }
     <input type="submit" class="btn btn-primary" value="Save"/>
 </form>
