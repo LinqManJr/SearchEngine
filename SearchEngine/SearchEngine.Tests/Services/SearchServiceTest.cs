@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
-using SearchEngine.Tests;
 using SearchEngine.WebApp.Services;
 using System.Threading.Tasks;
 
