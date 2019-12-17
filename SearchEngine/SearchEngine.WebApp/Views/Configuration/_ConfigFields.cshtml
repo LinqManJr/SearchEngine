@@ -1,1 +1,12 @@
 ﻿@model Dictionary<string,string>
+
+<form method="post">
+    @foreach(var pair in Model)
+    {        
+        <div class="form-group">
+            <label for="@pair.Key">@pair.Key</label>
+            <input type="text" class="form-control" id="@pair.Key" value="@pair.Value" />
+        </div>        
+    }
+    <input type="submit" class="btn btn-primary" value="Save"/>
+</form>

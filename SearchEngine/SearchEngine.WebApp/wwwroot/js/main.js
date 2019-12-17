@@ -15,7 +15,7 @@
     //select section ajax
     $("#btnSelect").click(function () {
         let value = $("#dropDownSection :selected").text();
-        $("#sectionFields").load('/Configuration/Index', { sectionName: value });
+        $("#sectionFields").load('/Configuration/GetFields', { sectionName: value });
     }); 
 
     //details ajax
