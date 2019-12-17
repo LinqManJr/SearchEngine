@@ -22,5 +22,15 @@ namespace SearchEngine.WebApp.Controllers
             ViewBag.SectionNames = new SelectList(sections);
             return View();
         }
+
+        public IActionResult GetFields(string sectionName)
+        {
+            var fields = _configuration.GetSection("EnginesConfig")
+                                        .GetSection(sectionName)
+                                        .GetChildren()
+                                        .ToDictionary(x => x.Key, y => y.Value);
+
+            return PartialView("_ConfigFields", fields);
+        }
     }
 }

@@ -12,6 +12,12 @@
         $("#tableResult").load('/SearchDb/FilterByWord', { word: value });
     });    
 
+    //select section ajax
+    $("#btnSelect").click(function () {
+        let value = $("#dropDownSection :selected").text();
+        $("#sectionFields").load('/Configuration/Index', { sectionName: value });
+    }); 
+
     //details ajax
     $(function () {
         $.ajaxSetup({ cache: false });
