@@ -41,9 +41,18 @@ namespace SearchEngine.WebApp.Services
 
         public async Task<SearchResult> SearchInManyAsync(string pattern, params ISearchEngine[] engines)
         {
-            var tasks = engines.Select(x => x.SearchAsync(pattern));
-            var firstTask = await Task.WhenAny(tasks);
-            return await firstTask;
+            var tasks = engines.Select(x => x.SearchAsync(pattern)).OrderByCompletion();
+            var orderedTasks = _engines.Select(x => x.SearchAsync(pattern)).OrderByCompletion();
+
+            foreach (var task in orderedTasks)
+            {
+                var result = await task;
+
+                if (result.Error == null)
+                    return result;
+            }
+
+            return await orderedTasks[0];
         }
     }
 }
