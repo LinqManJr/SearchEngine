@@ -27,17 +27,6 @@ namespace SearchEngine.Tests.Engines
         }
 
         [Test]
-        public void ShouldReturnErrorResult()
-        {
-            _options.Apikey = "2ef785999ce24554b5454343e32211";
-            _engine = new BingSearchEngine(_options);
-            var result = _engine.Search("nginx");
-
-            Assert.IsNotNull(result.Error);
-            Assert.That(result.Error.Title == "ProtocolError");
-        }
-
-        [Test]
         public async Task ShouldReturnResultAsync()
         {
             _engine = new BingSearchEngine(_options);
@@ -48,9 +37,22 @@ namespace SearchEngine.Tests.Engines
         }
 
         [Test]
-        public async Task ShouldReturnErrorResultAsync()
+        [TestCase("2ef785999ce24554b5454343e32211")]
+        public void ShouldReturnErrorResult(string api)
         {
-            _options.Apikey = "2ef785999ce24554b5454343e32211";
+            _options.Apikey = api;
+            _engine = new BingSearchEngine(_options);
+            var result = _engine.Search("nginx");
+
+            Assert.IsNotNull(result.Error);
+            Assert.That(result.Error.Title == "ProtocolError");
+        }        
+
+        [Test]
+        [TestCase("2ef785999ce24554b5454343e32211")]
+        public async Task ShouldReturnErrorResultAsync(string api)
+        {
+            _options.Apikey = api;
             _engine = new BingSearchEngine(_options);
             var result = await _engine.SearchAsync("nginx");
 
