@@ -7,6 +7,8 @@ namespace SearchEngine.Domain.Context
     {
         public SearchContext(DbContextOptions<SearchContext> options) : base(options) { }
 
+        public SearchContext( DbContextOptions options) : base(options){ }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Request>().Property(d => d.Date).HasDefaultValueSql("getdate()");
