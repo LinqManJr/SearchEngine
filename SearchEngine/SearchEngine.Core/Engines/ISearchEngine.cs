@@ -1,5 +1,4 @@
 ﻿using SearchEngine.Core.Models;
-using System;
 using System.Threading.Tasks;
 
 namespace SearchEngine.Core.Engines
@@ -8,10 +7,7 @@ namespace SearchEngine.Core.Engines
     {        
         SearchResult Search(string pattern);
 
-        Task<SearchResult> SearchAsync(string pattern);
-        
-        //TODO: think about config if we have many Options
-        //TODO: config builder to SearchEngines        
+        Task<SearchResult> SearchAsync(string pattern);                    
         
     }
 }

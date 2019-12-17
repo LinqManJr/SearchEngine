@@ -2,7 +2,6 @@
 {
     public class YandexSearchOptions : SearchEngineOptions
     {        
-
         public string Username { get; set; }
     }
 }
