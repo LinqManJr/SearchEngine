@@ -1,5 +1,6 @@
 ﻿using SearchEngine.Core.Engines;
 using SearchEngine.Core.Models;
+using SearchEngine.WebApp.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,17 @@ namespace SearchEngine.WebApp.Services
             if (_engines == null)
                 throw new Exception();
 
-            var tasks = _engines.Select(x => x.SearchAsync(pattern));
-            var firstTask = await Task.WhenAny(tasks);
-            return await firstTask;
+            var orderedTasks = _engines.Select(x => x.SearchAsync(pattern)).OrderByCompletion();
+            
+            foreach(var task in orderedTasks)
+            {
+                var result = await task;
+
+                if (result.Error == null)
+                    return result;
+            }
+
+            return await orderedTasks[0];
         }
 
         public async Task<SearchResult> SearchInManyAsync(string pattern, params ISearchEngine[] engines)
