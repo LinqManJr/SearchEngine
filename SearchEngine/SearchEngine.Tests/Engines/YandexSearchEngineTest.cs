@@ -1,13 +1,13 @@
 using NUnit.Framework;
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
-using SearchEngine.Tests;
 using System.Threading.Tasks;
 
-namespace SearchEngine.Test
+namespace SearchEngine.Tests.Engines
 {
+    [TestFixture]
     public class YandexSearchEngineTest
-    {        
+    {
         private YandexSearchOptions _options;
 
         [SetUp]
@@ -36,7 +36,7 @@ namespace SearchEngine.Test
             Assert.IsNotNull(result.Error);
             Assert.That(result.Error.Title == "Error Code is 48");
             Assert.That(result.Error.Description.StartsWith("Неверный тип поиска"));
-            
+
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace SearchEngine.Test
             Assert.IsNotNull(result.Error);
             Assert.That(result.Error.Title == "Error Code is 42");
             Assert.That(result.Error.Description.StartsWith("Invalid key"));
-        }        
+        }
 
         [Test]
         public async Task ShouldReturnResultAsync()

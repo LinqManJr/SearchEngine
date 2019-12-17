@@ -1,20 +1,19 @@
 ﻿using NUnit.Framework;
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
-using SearchEngine.Tests;
 using System.Threading.Tasks;
 
-namespace SearchEngine.Test
+namespace SearchEngine.Tests.Engines
 {
     [TestFixture]
     public class BingSearchEngineTest
-    {        
+    {
         private SearchEngineOptions _options;
         private ISearchEngine _engine;
         [SetUp]
         public void SetUp()
         {
-            _options = DefaultConfigs.BingOptions;            
+            _options = DefaultConfigs.BingOptions;
         }
 
         [Test]

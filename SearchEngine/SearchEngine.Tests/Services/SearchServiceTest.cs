@@ -5,7 +5,7 @@ using SearchEngine.Tests;
 using SearchEngine.WebApp.Services;
 using System.Threading.Tasks;
 
-namespace SearchEngine.Test
+namespace SearchEngine.Tests.Services
 {
     [TestFixture]
     public class SearchServiceTest
@@ -35,7 +35,7 @@ namespace SearchEngine.Test
         {
             var searchService = new SearchService(_bingEngine, _googleEngine);
             var result = await searchService.SearchInManyAsync("nginx");
-            
+
             Assert.That(result.Error == null);
         }
     }
