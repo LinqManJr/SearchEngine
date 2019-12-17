@@ -12,14 +12,15 @@ namespace SearchEngine.WebApp.Helpers
     {
         public static HtmlString CreatePartialList(this IHtmlHelper html,IEnumerable<ItemResult> results)
         {
-            var tagBuilder = new TagBuilder("div");
+            /*var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass("list-group");
 
             var content = new TagBuilder("div");
             content.AddCssClass("d-flex w-100 justify-content-between");           
 
 
-            return new HtmlString(tagBuilder.ToString());
+            return new HtmlString(tagBuilder.ToString());*/
+            throw new NotImplementedException();
         }
 
         public static HtmlString CreateErrorItem(this IHtmlHelper html, ErrorItem item)

@@ -18,20 +18,30 @@ namespace SearchEngine.WebApp.Services
         public IEnumerable<ISearchEngine> GetSearchEngines()
         {
             var engines = new List<ISearchEngine>();
-            var sections = _configuration.GetSection("EnginesConfig").GetChildren().ToList();
+            var sections = _configuration.GetSection("EnginesConfig").GetChildren().ToList();                      
 
-           // var ya = sections.First(x => x.Key == "Yandex").Get<YandexSearchOptions>();
-            var google = sections.First(x => x.Key == "Google").Get<GoogleSearchOptions>();
-            var bing = sections.First(x => x.Key == "Bing").Get<SearchEngineOptions>();
-
-            engines.AddRange(new List<ISearchEngine> 
-            { 
-                //new YandexSearchEngine(ya),
-                new GoogleSearchEngine(google),
-                new BingSearchEngine(bing)
-            });
+            CorrelateOptions(sections, ref engines);            
 
             return engines;
+        }
+        private void CorrelateOptions(IEnumerable<IConfigurationSection> sections, ref List<ISearchEngine> engines)
+        {            
+            foreach (var section in sections)
+            {
+                switch (section.Key)
+                {
+                    case "Yandex":
+                        engines.Add(new YandexSearchEngine(section.Get<YandexSearchOptions>()));
+                        continue;
+                    case "Google":
+                        engines.Add(new GoogleSearchEngine(section.Get<GoogleSearchOptions>()));
+                        continue;
+                    case "Bing":
+                        engines.Add(new BingSearchEngine(section.Get<SearchEngineOptions>()));
+                        continue;
+                    default: continue;
+                }
+            }
         }
     }
 }
