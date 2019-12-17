@@ -27,7 +27,7 @@ namespace SearchEngine.Domain.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<DateTime>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
                     Engine = table.Column<string>(nullable: true),
                     SearchWord = table.Column<string>(nullable: true),
                     ResultId = table.Column<int>(nullable: false)

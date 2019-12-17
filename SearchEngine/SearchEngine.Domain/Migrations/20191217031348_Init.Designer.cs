@@ -10,7 +10,7 @@ using SearchEngine.Domain.Context;
 namespace SearchEngine.Domain.Migrations
 {
     [DbContext(typeof(SearchContext))]
-    [Migration("20191216063818_Init")]
+    [Migration("20191217031348_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,7 +29,9 @@ namespace SearchEngine.Domain.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("Engine")
                         .HasColumnType("nvarchar(max)");

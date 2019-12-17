@@ -5,9 +5,7 @@ namespace SearchEngine.Domain.Context
 {
     public class SearchContext : DbContext
     {
-        public SearchContext(DbContextOptions<SearchContext> options) : base(options)
-        {
-        }
+        public SearchContext(DbContextOptions<SearchContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
