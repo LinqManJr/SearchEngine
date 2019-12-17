@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
-using SearchEngine.Core.Configurations;
 
 namespace SearchEngine.WebApp.Controllers
 {
@@ -36,6 +32,7 @@ namespace SearchEngine.WebApp.Controllers
 
             return PartialView("_ConfigFields", fields);
         }
+
         [HttpPost]
         public IActionResult Save(Dictionary<string,string> dict)
         {
@@ -49,6 +46,7 @@ namespace SearchEngine.WebApp.Controllers
                     engineSection[pair.Key] = pair.Value;
                 }
             }
+            
             return RedirectToAction("Index");
         }
     }
