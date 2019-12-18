@@ -27,7 +27,7 @@ namespace SearchEngine.Tests
         { 
             Name = "bing", 
             Uri = "https://api.cognitive.microsoft.com/bing/v7.0/search", 
-            Apikey = ""
+            Apikey = "2efb912d79e84eb6820192d1805fb44b"
         };
 
         public static IList<ItemResult> GetDefaultItemsOfResult => new List<ItemResult>
