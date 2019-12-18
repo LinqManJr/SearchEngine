@@ -11,8 +11,8 @@ namespace SearchEngine.Tests
         { 
             Name = "yandex", 
             Uri = "https://yandex.com/search/xml", 
-            Apikey = "", 
-            Username = "" 
+            Apikey = "03.304041461:62374306f8f0c1938a6a26f0ce0511be", 
+            Username = "johnybond32"
         };
 
         public static GoogleSearchOptions GoogleOptions => new GoogleSearchOptions 

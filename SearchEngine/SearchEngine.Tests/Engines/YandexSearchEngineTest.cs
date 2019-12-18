@@ -37,6 +37,32 @@ namespace SearchEngine.Tests.Engines
         }
 
         [Test]
+        [TestCase(8)]
+        [TestCase(25)]
+        public void ShouldReturnValidNumOfItems(int count)
+        {
+            _options.NumItems = count;
+            var searchEngine = new YandexSearchEngine(_options);
+            var result = searchEngine.Search("nginx");
+
+            Assert.IsNull(result.Error);
+            Assert.IsTrue(result.Results.Count == count);
+        }
+
+        [Test]
+        [TestCase(8)]
+        [TestCase(25)]
+        public async Task ShouldReturnValidNumOfItemsAsync(int count)
+        {
+            _options.NumItems = count;
+            var searchEngine = new YandexSearchEngine(_options);
+            var result = await searchEngine.SearchAsync("nginx");
+
+            Assert.IsNull(result.Error);
+            Assert.IsTrue(result.Results.Count == count);
+        }
+
+        [Test]
         [TestCase("https://yandex.ru/search/xml")]
         public void ShouldReturnErrorResultIfInvalidSearch(string uri)
         {
