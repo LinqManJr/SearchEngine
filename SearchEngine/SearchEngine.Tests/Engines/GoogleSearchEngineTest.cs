@@ -32,6 +32,35 @@ namespace SearchEngine.Tests.Engines
         }
 
         [Test]
+        [TestCase(9)]
+        [TestCase(10)]
+        [TestCase(24)]
+        public void ShouldReturnValidCountOfResultItems(int count)
+        {
+            _options.NumItems = count;
+            _searchEngine = new GoogleSearchEngine(_options);
+            var result = _searchEngine.Search("nginx");
+
+            Assert.IsNull(result.Error);
+            Assert.IsTrue(result.Results.Count == count);
+        }
+
+        [Test]
+        [TestCase(0)]
+        [TestCase(9)]
+        [TestCase(10)]
+        [TestCase(24)]
+        public async Task ShouldReturnValidCountOfResultItemsAsync(int count)
+        {
+            _options.NumItems = count;
+            _searchEngine = new GoogleSearchEngine(_options);
+            var result = await _searchEngine.SearchAsync("nginx");
+
+            Assert.IsNull(result.Error);
+            Assert.IsTrue(result.Results.Count == count);
+        }
+
+        [Test]
         public async Task ShouldReturnSearchResultAsync()
         {
             var result = await _searchEngine.SearchAsync("nginx");

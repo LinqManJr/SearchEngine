@@ -19,8 +19,8 @@ namespace SearchEngine.Tests
         { 
             Name = "google", 
             Uri = string.Empty,
-            Apikey = "", 
-            AppId = "" 
+            Apikey = "AIzaSyB3ex6PDKCy54J92_1rB0q1TBn1jbv43SU", 
+            AppId = "012320430393294220051:cxnkugrhcjf"            
         };
 
         public static SearchEngineOptions BingOptions => new SearchEngineOptions 
