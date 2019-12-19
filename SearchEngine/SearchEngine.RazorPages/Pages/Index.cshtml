@@ -4,7 +4,42 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<form class="form-inline" method="post">
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="inputWord" class="sr-only">Search</label>
+        <input type="text" class="form-control" name="searchText" placeholder="Type any ...">
+    </div>
+    <input type="submit" class="btn btn-primary mb-2" value="Search" />
+</form>
+<div id="result">
+    <div class="title d-inline">
+        <h5>@Model.SearchResult?.SearchTitle</h5>
+        <h5>All matches: @Model?.SearchResult?.CountResult</h5>
+    </div> 
+    <div class="resultItems">
+        @if (@Model.SearchResult?.Error != null)
+        {
+            <div class="list-group">
+                <div class="list-group-item-warning">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">@Model.SearchResult.Error.Title</h5>
+                        <small>@Model.SearchResult.Error.Description</small>
+                    </div>
+                </div>
+            </div>
+            return;
+        }
+        @if (Model.SearchResult == null) return;
+        @foreach (var m in Model.SearchResult?.Results)
+        {
+            <div class="list-group">
+                <div class="list-group-item ">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">@m.SiteTitle</h5>
+                        <small><a href="@m.ActionLink">@m.ActionLink</a></small>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

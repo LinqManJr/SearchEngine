@@ -1,25 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
+using SearchEngine.Core.Models;
+using SearchEngine.RazorPages.Services;
 
 namespace SearchEngine.RazorPages.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ISearchService _searchService;
+        private readonly IDatabaseService _dbService;
 
-        public IndexModel(ILogger<IndexModel> logger)
+
+        public SearchResult SearchResult { get; set; }
+        public IndexModel(ISearchService searchService, IDatabaseService dbService)
+        {           
+            _searchService = searchService;
+            _dbService = dbService;
+        }        
+
+        public async Task OnPostAsync(string searchText)
         {
-            _logger = logger;
-        }
+            if (searchText == null) return;
+            SearchResult = await _searchService.SearchInManyAsync(searchText);
 
-        public void OnGet()
-        {
-
+            if (SearchResult.Error == null)
+                await _dbService.AddRequestToDb(SearchResult, searchText);
         }
     }
 }
