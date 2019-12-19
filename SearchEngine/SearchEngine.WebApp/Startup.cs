@@ -27,7 +27,8 @@ namespace SearchEngine.WebApp
             services.AddScoped<ISearchService, SearchService>();
             services.AddScoped<IDatabaseService, SearchDbService>();
 
-            services.AddControllersWithViews();           
+            services.AddControllersWithViews();
+            services.AddRazorPages();
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -50,6 +51,8 @@ namespace SearchEngine.WebApp
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Search}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
             });
         }
     }
