@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SearchEngine.Domain.Context;
 
 namespace SearchEngine.RazorPages
 {
@@ -22,10 +24,15 @@ namespace SearchEngine.RazorPages
         
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("SEConnection");
+            services.AddDbContext<SearchContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddScoped<SearchServiceFactory>();
+            services.AddScoped<ISearchService, SearchService>();
+            services.AddScoped<IDatabaseService, SearchDbService>();
             services.AddRazorPages();
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -33,18 +40,14 @@ namespace SearchEngine.RazorPages
                 app.UseDeveloperExceptionPage();
             }
             else
-            {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            {                             
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseRouting();            
 
             app.UseEndpoints(endpoints =>
             {
