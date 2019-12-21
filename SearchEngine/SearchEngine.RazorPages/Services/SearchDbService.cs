@@ -19,10 +19,7 @@ namespace SearchEngine.RazorPages.Services
             _context = context;
         }
         public async Task AddRequestToDb(SearchResult searchresult, string word)
-        {
-
-            //TODO: add DTO with searching word and searchresult
-
+        {         
             var request = new Request
             {
                 SearchWord = word,
@@ -46,10 +43,9 @@ namespace SearchEngine.RazorPages.Services
 
         public async Task<Result> GetResultById(int id) => await _context.Results.FirstOrDefaultAsync(x => x.Id == id);
 
-        public IEnumerable<SearchWordDto> GetWords()
+        public IEnumerable<string> GetWords()
         {
-            var words = _context.Requests.Select(x => new SearchWordDto { Id = x.Id, Word = x.SearchWord }).DistinctBy(p => p.Word);
-            return words;
-        }
+            return _context.Requests.Select(x => x.SearchWord).Distinct();
+        }        
     }
 }

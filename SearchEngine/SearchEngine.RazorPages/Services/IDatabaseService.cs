@@ -13,6 +13,6 @@ namespace SearchEngine.RazorPages.Services
         Task<IEnumerable<Request>> GetRequestsByWord(string word);
         Task<Result> GetResultById(int id);
 
-        IEnumerable<SearchWordDto> GetWords();
+        IEnumerable<string> GetWords();
     }
 }
