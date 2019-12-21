@@ -24,7 +24,7 @@
                 @if (Model.Fields == null) return;
                 <form method="post">
                     @foreach (var pair in Model.Fields)
-                    {       
+                    {
                         <input type="hidden" asp-for="EngineName"/>
                         <label for="@pair.Key">@pair.Key</label>
                         <input type="text" class="form-control" name="@pair.Key" value="@pair.Value" />

@@ -29,10 +29,9 @@ namespace SearchEngine.RazorPages
             FillConfigurationFields();
         }
 
-        public void OnPost(string selSection, Dictionary<string, string> dict)
-        {
-            selSection = selSection ?? EngineName;
-            var engineSection = _configuration.GetSection("EnginesConfig").GetSection(selSection);
+        public void OnPost(Dictionary<string, string> dict)
+        {            
+            var engineSection = _configuration.GetSection("EnginesConfig").GetSection(EngineName);
 
             foreach (var pair in dict)
             {
