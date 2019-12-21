@@ -1,0 +1,39 @@
+﻿@page
+@model SearchEngine.RazorPages.ConfigurationsModel
+@{
+    ViewData["Title"] = "Configurations";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Configurations</h1>
+<body>
+    <div class="container">
+        <div class="selectSection">
+            <form class="form-inline" method="get">
+                <label>Choose section </label>
+                <div class="form-group mx-sm-3 mb-2">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">                        
+                        <select  asp-items="@(new SelectList(Model.Sections))" asp-for="EngineName" class="form-control" name="selSection">                            
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary mb-2" value="Select" />
+                <hr />
+            </form>
+            <div id="sectionFields">
+                @if (Model.Fields == null) return;
+                <form method="post">
+                    @foreach (var pair in Model.Fields)
+                    {       
+                        <input type="hidden" asp-for="EngineName"/>
+                        <label for="@pair.Key">@pair.Key</label>
+                        <input type="text" class="form-control" name="@pair.Key" value="@pair.Value" />
+                    }
+                    <hr />
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
