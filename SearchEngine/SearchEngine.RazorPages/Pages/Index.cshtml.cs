@@ -9,8 +9,7 @@ namespace SearchEngine.RazorPages.Pages
     {
         private readonly ISearchService _searchService;
         private readonly IDatabaseService _dbService;
-
-
+        
         public SearchResult SearchResult { get; set; }
         public IndexModel(ISearchService searchService, IDatabaseService dbService)
         {           
@@ -25,6 +24,6 @@ namespace SearchEngine.RazorPages.Pages
 
             if (SearchResult.Error == null)
                 await _dbService.AddRequestToDb(SearchResult, searchText);
-        }
+        }        
     }
 }

@@ -12,34 +12,7 @@
     <input type="submit" class="btn btn-primary mb-2" value="Search" />
 </form>
 <div id="result">
-    <div class="title d-inline">
-        <h5>@Model.SearchResult?.SearchTitle</h5>
-        <h5>All matches: @Model?.SearchResult?.CountResult</h5>
-    </div> 
-    <div class="resultItems">
-        @if (@Model.SearchResult?.Error != null)
-        {
-            <div class="list-group">
-                <div class="list-group-item-warning">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">@Model.SearchResult.Error.Title</h5>
-                        <small>@Model.SearchResult.Error.Description</small>
-                    </div>
-                </div>
-            </div>
-            return;
-        }
-        @if (Model.SearchResult == null) return;
-        @foreach (var m in Model.SearchResult?.Results)
-        {
-            <div class="list-group">
-                <div class="list-group-item ">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">@m.SiteTitle</h5>
-                        <small><a href="@m.ActionLink">@m.ActionLink</a></small>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
+    <p class="text-info">SearchEngine - @Model.SearchResult?.SearchTitle</p>
+    <p class="text-info">Count - @Model.SearchResult?.CountResult</p>
+    @await Html.PartialAsync("../Partials/_ResultsPartial", Model.SearchResult)
 </div>
