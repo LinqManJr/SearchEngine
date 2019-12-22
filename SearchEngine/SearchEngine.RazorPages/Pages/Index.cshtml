@@ -14,5 +14,6 @@
 <div id="result">
     <p class="text-info">SearchEngine - @Model.SearchResult?.SearchTitle</p>
     <p class="text-info">Count - @Model.SearchResult?.CountResult</p>
-    @await Html.PartialAsync("../Partials/_ResultsPartial", Model.SearchResult)
+   
+    <partial name="../Partials/_ResultsPartial" model="Model.SearchResult"/>
 </div>
