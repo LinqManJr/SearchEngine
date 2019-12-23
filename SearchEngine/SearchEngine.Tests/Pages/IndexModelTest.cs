@@ -1,21 +1,17 @@
 ﻿using NUnit.Framework;
-using SearchEngine.Core.Services;
 using SearchEngine.RazorPages.Pages;
 using SearchEngine.RazorPages.Services;
 using SearchEngine.Tests;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SearchEngine.RazorPages.Test.Pages
 {
     [TestFixture]
-    public class IndexTest
+    public class IndexModelTest
     {
         private IndexModel _page;
         private IDatabaseService _dbService;
-        private ISearchService _searchService;
+        
         [SetUp]
         public void Setup()
         {
