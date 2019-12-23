@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SearchEngine.RazorPages.Helpers
+namespace SearchEngine.Core.Extensions
 {
     public static class Extensions
     {

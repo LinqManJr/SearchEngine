@@ -1,6 +1,7 @@
 ﻿using Google;
 using Google.Apis.Customsearch.v1;
 using Google.Apis.Services;
+using Microsoft.Extensions.Options;
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Models;
 using System;
@@ -15,9 +16,14 @@ namespace SearchEngine.Core.Engines
     {        
         private readonly GoogleSearchOptions _options;
                 
-        public GoogleSearchEngine(GoogleSearchOptions options)
+        /*public GoogleSearchEngine(GoogleSearchOptions options)
         {
             _options = options;
+        }*/
+
+        public GoogleSearchEngine(IOptions<SearchEngineOptions> options)
+        {
+            _options = options as GoogleSearchOptions;
         }
 
         public SearchResult Search(string pattern)

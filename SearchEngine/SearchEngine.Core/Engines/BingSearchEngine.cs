@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Linq;
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Models;
 using System;
@@ -13,10 +14,15 @@ namespace SearchEngine.Core.Engines
     {        
         private readonly SearchEngineOptions _options;        
                        
-        public BingSearchEngine(SearchEngineOptions options)
+        /*public BingSearchEngine(SearchEngineOptions options)
         {
             _options = options;
-        }        
+        }   */
+
+        public BingSearchEngine(IOptions<SearchEngineOptions> options)
+        {
+            _options = options.Value;
+        }
 
         public SearchResult Search(string pattern)
         {
