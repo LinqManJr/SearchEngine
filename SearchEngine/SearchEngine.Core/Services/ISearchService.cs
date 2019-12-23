@@ -2,7 +2,7 @@
 using SearchEngine.Core.Models;
 using System.Threading.Tasks;
 
-namespace SearchEngine.RazorPages.Services
+namespace SearchEngine.Core.Services
 {
     public interface ISearchService
     {

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SearchEngine.Core.Models;
+using SearchEngine.Core.Services;
 using SearchEngine.RazorPages.Services;
 
 namespace SearchEngine.RazorPages.Pages

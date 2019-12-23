@@ -1,12 +1,13 @@
 ﻿using SearchEngine.Core.Engines;
 using SearchEngine.Core.Models;
 using SearchEngine.RazorPages.Helpers;
+using SearchEngine.RazorPages.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SearchEngine.RazorPages.Services
+namespace SearchEngine.Core.Services
 {
     public class SearchService : ISearchService
     {
