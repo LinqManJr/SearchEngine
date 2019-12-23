@@ -18,6 +18,11 @@ namespace SearchEngine.Core.Engines
         
         private readonly YandexSearchOptions _options;             
 
+        public YandexSearchEngine(YandexSearchOptions options)
+        {
+            _options = options;
+        }
+
         public YandexSearchEngine(IOptions<YandexSearchOptions> options)
         {
             _options = options.Value;

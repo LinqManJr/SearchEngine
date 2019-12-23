@@ -14,10 +14,10 @@ namespace SearchEngine.Core.Engines
     {        
         private readonly SearchEngineOptions _options;        
                        
-        /*public BingSearchEngine(SearchEngineOptions options)
+        public BingSearchEngine(SearchEngineOptions options)
         {
             _options = options;
-        }*/
+        }
 
         public BingSearchEngine(IOptions<SearchEngineOptions> options)
         {

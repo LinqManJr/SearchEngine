@@ -16,6 +16,11 @@ namespace SearchEngine.Core.Engines
     {        
         private readonly GoogleSearchOptions _options;        
 
+        public GoogleSearchEngine(GoogleSearchOptions options)
+        {
+            _options = options;
+        }
+
         public GoogleSearchEngine(IOptions<GoogleSearchOptions> options)
         {
             _options = options.Value;
