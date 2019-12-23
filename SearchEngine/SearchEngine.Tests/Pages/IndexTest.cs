@@ -19,17 +19,25 @@ namespace SearchEngine.RazorPages.Test.Pages
         [SetUp]
         public void Setup()
         {
-            _dbService = DefaultConfigs.DefaultISearchDbService;
-            _searchService = DefaultConfigs.GetDefaultSearchService();
-            _page = new IndexModel( _searchService, _dbService);
+            _dbService = DefaultConfigs.DefaultISearchDbService;            
         }
 
         [Test]
         [TestCase("singleton")]
-        public async Task ShouldCheckSearchResultOnPostAsync(string searchText)
-        {
+        public async Task ShouldCheckValidSearchResultOnPostAsync(string searchText)
+        {            
+            _page = new IndexModel(DefaultConfigs.GetDefaultSearchService(), _dbService);
             await _page.OnPostAsync(searchText);
             Assert.IsNull(_page.SearchResult.Error);
+        }
+
+        [Test]
+        [TestCase("singleton")]
+        public async Task ShouldCheckErrorSearchResultOnPostAsync(string searchText)
+        {
+            _page = new IndexModel(DefaultConfigs.GetBadSearchService(), _dbService);
+            await _page.OnPostAsync(searchText);
+            Assert.IsNotNull(_page.SearchResult.Error);
         }
     }
 }

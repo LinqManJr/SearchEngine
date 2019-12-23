@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
 using SearchEngine.Core.Models;
@@ -36,6 +35,19 @@ namespace SearchEngine.Tests
                 Uri = string.Empty,
                 Apikey = "AIzaSyB3ex6PDKCy54J92_1rB0q1TBn1jbv43SU",
                 AppId = "012320430393294220051:cxnkugrhcjf"
+            };
+
+            return new SearchService(new List<ISearchEngine> { new GoogleSearchEngine(googleOptions) });
+        }
+
+        public static ISearchService GetBadSearchService()
+        {
+            var googleOptions = new GoogleSearchOptions
+            {
+                Name = "google",
+                Uri = string.Empty,
+                Apikey = "",
+                AppId = ""
             };
 
             return new SearchService(new List<ISearchEngine> { new GoogleSearchEngine(googleOptions) });
