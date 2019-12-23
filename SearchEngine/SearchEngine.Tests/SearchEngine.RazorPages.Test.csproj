@@ -15,11 +15,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SearchEngine.Core\SearchEngine.Core.csproj" />
+    <ProjectReference Include="..\SearchEngine.RazorPages\SearchEngine.RazorPages.csproj" />
     <ProjectReference Include="..\SearchEngine.WebApp\SearchEngine.WebApp.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\" />
   </ItemGroup>
 
 </Project>

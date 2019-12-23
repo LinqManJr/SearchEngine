@@ -2,11 +2,12 @@
 using NUnit.Framework;
 using SearchEngine.Core.Models;
 using SearchEngine.Domain.Context;
-using SearchEngine.WebApp.Services;
+using SearchEngine.RazorPages.Services;
+using SearchEngine.Tests;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SearchEngine.Tests.Services
+namespace SearchEngine.RazorPages.Test.Services
 {
     [TestFixture]
     public class SearchDbServiceTest
@@ -14,14 +15,14 @@ namespace SearchEngine.Tests.Services
         private SearchContext _context;
         private IDatabaseService _dbService;
         public SearchDbServiceTest()
-        {           
+        {
         }
 
         [SetUp]
         public void Setup()
         {
-            _context = new SearchContext(new DbContextOptionsBuilder<SearchContext>().UseInMemoryDatabase("SearchDb").Options);
-            _dbService = new SearchDbService(_context);
+            _context = DefaultConfigs.DefaultContext;
+            _dbService = DefaultConfigs.GetDefaultServiceWithContext(_context);
         }
         [TearDown]
         public void TearDown()
@@ -38,7 +39,7 @@ namespace SearchEngine.Tests.Services
             Results = DefaultConfigs.GetDefaultItemsOfResult
         };
 
-        private async Task AddSearchResult(SearchResult result,int count)
+        private async Task AddSearchResult(SearchResult result, int count)
         {
             foreach (var i in Enumerable.Range(0, count))
                 await _dbService.AddRequestToDb(result, $"word{i}");
@@ -49,9 +50,9 @@ namespace SearchEngine.Tests.Services
         {
             var word = "Some Word";
             var countBefore = await _context.Requests.CountAsync();
-            var result = DefaultSearchResult;            
+            var result = DefaultSearchResult;
 
-            await  _dbService.AddRequestToDb(result, word);
+            await _dbService.AddRequestToDb(result, word);
 
             Assert.That(countBefore < await _context.Requests.CountAsync());
         }
@@ -89,11 +90,11 @@ namespace SearchEngine.Tests.Services
             await _dbService.AddRequestToDb(DefaultSearchResult, "new");
             await _dbService.AddRequestToDb(DefaultSearchResult, "old");
             await _dbService.AddRequestToDb(DefaultSearchResult, "old");
-            var result = _dbService.GetWords().ToList();           
+            var result = _dbService.GetWords().ToList();
 
-            Assert.That(result.Count(x => x.Word.StartsWith("word")) == 3);
-            Assert.That(result.Count(x => x.Word == "new") == 1);
-            Assert.That(result.Count(x => x.Word == "old") == 1);
+            Assert.That(result.Count(x => x.StartsWith("word")) == 3);
+            Assert.That(result.Count(x => x == "new") == 1);
+            Assert.That(result.Count(x => x == "old") == 1);
         }
 
         [Test]

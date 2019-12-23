@@ -1,4 +1,11 @@
-﻿using SearchEngine.Core.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using SearchEngine.Core.Configurations;
+using SearchEngine.Core.Engines;
+using SearchEngine.Core.Models;
+using SearchEngine.Core.Services;
+using SearchEngine.Domain.Context;
+using SearchEngine.RazorPages.Services;
 using System.Collections.Generic;
 
 namespace SearchEngine.Tests
@@ -20,5 +27,25 @@ namespace SearchEngine.Tests
         };
 
         public static ErrorItem GetDefaultErrorItem => new ErrorItem("BadRequest", "Something went wrong");
+
+        public static ISearchService GetDefaultSearchService()
+        {
+            var googleOptions = new GoogleSearchOptions
+            {
+                Name = "google",
+                Uri = string.Empty,
+                Apikey = "AIzaSyB3ex6PDKCy54J92_1rB0q1TBn1jbv43SU",
+                AppId = "012320430393294220051:cxnkugrhcjf"
+            };
+
+            return new SearchService(new List<ISearchEngine> { new GoogleSearchEngine(googleOptions) });
+        }
+
+        public static IDatabaseService DefaultISearchDbService => new SearchDbService(DefaultContext);
+        public static IDatabaseService GetDefaultServiceWithContext(SearchContext context)
+        {
+            return new SearchDbService(context);
+        }
+        public static SearchContext DefaultContext => new SearchContext(new DbContextOptionsBuilder<SearchContext>().UseInMemoryDatabase("SearchDb").Options);
     }
 }
