@@ -18,4 +18,8 @@
     <ProjectReference Include="..\SearchEngine.WebApp\SearchEngine.WebApp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\" />
+  </ItemGroup>
+
 </Project>
