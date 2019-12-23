@@ -4,7 +4,7 @@ using SearchEngine.Core.Engines;
 using SearchEngine.Core.Test;
 using System.Threading.Tasks;
 
-namespace SearchEngine.Tests.Engines
+namespace SearchEngine.Core.Test.Engines
 {
     [TestFixture]
     public class BingSearchEngineTest
@@ -37,7 +37,7 @@ namespace SearchEngine.Tests.Engines
             Assert.That(result.Results.Count > 0);
         }
 
-        [Test]        
+        [Test]
         [TestCase(8)]
         [TestCase(10)]
         [TestCase(23)]
@@ -76,7 +76,7 @@ namespace SearchEngine.Tests.Engines
 
             Assert.IsNotNull(result.Error);
             Assert.That(result.Error.Title == "ProtocolError");
-        }        
+        }
 
         [Test]
         [TestCase("2ef785999ce24554b5454343e32211")]

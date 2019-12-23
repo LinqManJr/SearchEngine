@@ -2,10 +2,10 @@
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
 using SearchEngine.Core.Services;
-using SearchEngine.Core.Test;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SearchEngine.Tests.Services
+namespace SearchEngine.Core.Test.Services
 {
     [TestFixture]
     public class SearchServiceTest
@@ -33,7 +33,7 @@ namespace SearchEngine.Tests.Services
         [Test]
         public async Task ShouldReturnFirstExecTask()
         {
-            var searchService = new SearchService(_bingEngine, _googleEngine, _yaEngine);
+            var searchService = new SearchService(new List<ISearchEngine> { _bingEngine, _googleEngine, _yaEngine });
             var result = await searchService.SearchInManyAsync("nginx");
 
             Assert.That(result.Error == null);
