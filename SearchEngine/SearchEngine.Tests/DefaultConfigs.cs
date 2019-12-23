@@ -59,5 +59,16 @@ namespace SearchEngine.Tests
             return new SearchDbService(context);
         }
         public static SearchContext DefaultContext => new SearchContext(new DbContextOptionsBuilder<SearchContext>().UseInMemoryDatabase("SearchDb").Options);
+
+        public static SearchResult DefaultSearchResult => new SearchResult
+        {
+            CountResult = 10000,
+            SearchTitle = "word",
+            Error = null,
+            Results = GetDefaultItemsOfResult
+        };
+
+        
+
     }
 }
