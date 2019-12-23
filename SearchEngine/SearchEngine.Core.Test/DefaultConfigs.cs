@@ -1,32 +1,31 @@
-﻿using Microsoft.Extensions.Hosting;
-using SearchEngine.Core.Configurations;
+﻿using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Models;
 using System.Collections.Generic;
 
-namespace SearchEngine.Tests
+namespace SearchEngine.Core.Test
 {
     public static class DefaultConfigs
     {
-        public static YandexSearchOptions YaOptions => new YandexSearchOptions 
-        { 
-            Name = "yandex", 
-            Uri = "https://yandex.com/search/xml", 
-            Apikey = "", 
+        public static YandexSearchOptions YaOptions => new YandexSearchOptions
+        {
+            Name = "yandex",
+            Uri = "https://yandex.com/search/xml",
+            Apikey = "",
             Username = ""
         };
 
-        public static GoogleSearchOptions GoogleOptions => new GoogleSearchOptions 
-        { 
-            Name = "google", 
+        public static GoogleSearchOptions GoogleOptions => new GoogleSearchOptions
+        {
+            Name = "google",
             Uri = string.Empty,
-            Apikey = "", 
-            AppId = ""            
+            Apikey = "",
+            AppId = ""
         };
 
-        public static SearchEngineOptions BingOptions => new SearchEngineOptions 
-        { 
-            Name = "bing", 
-            Uri = "https://api.cognitive.microsoft.com/bing/v7.0/search", 
+        public static SearchEngineOptions BingOptions => new SearchEngineOptions
+        {
+            Name = "bing",
+            Uri = "https://api.cognitive.microsoft.com/bing/v7.0/search",
             Apikey = ""
         };
 
@@ -45,6 +44,5 @@ namespace SearchEngine.Tests
         };
 
         public static ErrorItem GetDefaultErrorItem => new ErrorItem("BadRequest", "Something went wrong");
-          
     }
 }

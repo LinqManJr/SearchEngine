@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchEngine.Domain", "Sear
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchEngine.WebApp", "SearchEngine.WebApp\SearchEngine.WebApp.csproj", "{557CD5AA-A87B-4487-97A0-C2742FB0F62C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchEngine.RazorPages", "SearchEngine.RazorPages\SearchEngine.RazorPages.csproj", "{DA7A921F-9676-4785-B287-0F583C402EB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchEngine.RazorPages", "SearchEngine.RazorPages\SearchEngine.RazorPages.csproj", "{DA7A921F-9676-4785-B287-0F583C402EB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0D4D3D72-8071-434A-904F-391585B0371C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchEngine.Core.Test", "SearchEngine.Core.Test\SearchEngine.Core.Test.csproj", "{01581E41-4667-4523-AE4C-1C7AE528B792}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +43,16 @@ Global
 		{DA7A921F-9676-4785-B287-0F583C402EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA7A921F-9676-4785-B287-0F583C402EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA7A921F-9676-4785-B287-0F583C402EB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01581E41-4667-4523-AE4C-1C7AE528B792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01581E41-4667-4523-AE4C-1C7AE528B792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01581E41-4667-4523-AE4C-1C7AE528B792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01581E41-4667-4523-AE4C-1C7AE528B792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{01581E41-4667-4523-AE4C-1C7AE528B792} = {0D4D3D72-8071-434A-904F-391585B0371C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B0F93BA4-F01F-4497-A073-7351EDB52ED4}

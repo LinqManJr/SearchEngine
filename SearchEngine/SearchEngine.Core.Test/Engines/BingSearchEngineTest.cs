@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
+using SearchEngine.Core.Test;
 using System.Threading.Tasks;
 
 namespace SearchEngine.Tests.Engines

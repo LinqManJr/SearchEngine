@@ -3,7 +3,7 @@ using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
 using System.Threading.Tasks;
 
-namespace SearchEngine.Tests.Engines
+namespace SearchEngine.Core.Test.Engines
 {
     [TestFixture]
     public class GoogleSearchEngineTest
@@ -77,12 +77,12 @@ namespace SearchEngine.Tests.Engines
 
             _searchEngine = new GoogleSearchEngine(_options);
             var result = _searchEngine.Search("nginx");
-            
+
             Assert.That(result.Error != null);
             Assert.AreEqual(result.Error.Title, "BadRequest");
             var desc = result.Error.Description;
 
-            Assert.That(desc.StartsWith("Message[The provided API key is invalid.]") || 
+            Assert.That(desc.StartsWith("Message[The provided API key is invalid.]") ||
                         desc.StartsWith("Message[Bad Request] Location[ - ] Reason[keyInvalid]"));
         }
 
@@ -128,7 +128,7 @@ namespace SearchEngine.Tests.Engines
 
             Assert.That(result.Error != null);
             Assert.That(result.Error.Title == "NotFound" || result.Error.Title == "BadRequest");
-            Assert.That(result.Error.Description.StartsWith("Message[Requested entity was not found.]") || 
+            Assert.That(result.Error.Description.StartsWith("Message[Requested entity was not found.]") ||
                         result.Error.Description.StartsWith("Message[Invalid Value]"));
         }
 

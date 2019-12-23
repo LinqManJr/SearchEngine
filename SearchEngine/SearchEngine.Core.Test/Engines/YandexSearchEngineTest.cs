@@ -3,7 +3,7 @@ using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Engines;
 using System.Threading.Tasks;
 
-namespace SearchEngine.Tests.Engines
+namespace SearchEngine.Core.Test.Engines
 {
     [TestFixture]
     public class YandexSearchEngineTest
@@ -79,7 +79,7 @@ namespace SearchEngine.Tests.Engines
         //This test must return positive if before get data from api you accept your IP-address on site https://xml.yandex.ru/settings/
         [Test]
         public void ShouldReturnErrorResultIfIpNotRegister()
-        {            
+        {
             var searchEngine = new YandexSearchEngine(_options);
             var result = searchEngine.Search("nginx");
 
@@ -105,7 +105,7 @@ namespace SearchEngine.Tests.Engines
 
         [Test]
         [TestCase("03.304041461:62374326f8f0c193806a26f0cc0511be", "")]
-        [TestCase("","anonymous33")]
+        [TestCase("", "anonymous33")]
         public void ShouldReturnErrorResultIfInvalidApiKeyOrUserName(string api, string username)
         {
             _options.Apikey = string.IsNullOrWhiteSpace(api) ? api : _options.Apikey;
