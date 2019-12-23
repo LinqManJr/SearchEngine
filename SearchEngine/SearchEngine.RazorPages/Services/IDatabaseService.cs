@@ -1,6 +1,5 @@
 ﻿using SearchEngine.Core.Models;
 using SearchEngine.Domain.Models;
-using SearchEngine.RazorPages.Dto;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -2,11 +2,9 @@
 using SearchEngine.Core.Models;
 using SearchEngine.Domain.Context;
 using SearchEngine.Domain.Models;
-using SearchEngine.RazorPages.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SearchEngine.RazorPages.Dto;
 
 namespace SearchEngine.RazorPages.Services
 {

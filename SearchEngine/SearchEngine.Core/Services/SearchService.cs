@@ -1,7 +1,6 @@
 ﻿using SearchEngine.Core.Engines;
 using SearchEngine.Core.Models;
 using SearchEngine.RazorPages.Helpers;
-using SearchEngine.RazorPages.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +10,12 @@ namespace SearchEngine.Core.Services
 {
     public class SearchService : ISearchService
     {
-        private readonly IEnumerable<ISearchEngine> _engines;
+        private readonly IEnumerable<ISearchEngine> _engines;        
 
-        public SearchService(params ISearchEngine[] engines)
+        public SearchService(IEnumerable<ISearchEngine> engines)
         {
             _engines = engines;
-        }
-        public SearchService(SearchServiceFactory seFactory)
-        {
-            _engines = seFactory.GetSearchEngines();
-        }
+        }        
 
         public async Task<SearchResult> SearchInManyAsync(string pattern)
         {

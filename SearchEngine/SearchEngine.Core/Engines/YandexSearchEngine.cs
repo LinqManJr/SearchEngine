@@ -16,16 +16,11 @@ namespace SearchEngine.Core.Engines
     public class YandexSearchEngine : ISearchEngine
     {   
         
-        private readonly YandexSearchOptions _options;
-        
-        /*public YandexSearchEngine(YandexSearchOptions options)
-        {
-            _options = options;
-        }*/
+        private readonly YandexSearchOptions _options;             
 
-        public YandexSearchEngine(IOptions<SearchEngineOptions> options)
+        public YandexSearchEngine(IOptions<YandexSearchOptions> options)
         {
-            _options = options as YandexSearchOptions;
+            _options = options.Value;
         }
 
         public SearchResult Search(string pattern)

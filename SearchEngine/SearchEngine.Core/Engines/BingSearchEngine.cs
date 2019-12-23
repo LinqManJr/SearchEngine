@@ -17,7 +17,7 @@ namespace SearchEngine.Core.Engines
         /*public BingSearchEngine(SearchEngineOptions options)
         {
             _options = options;
-        }   */
+        }*/
 
         public BingSearchEngine(IOptions<SearchEngineOptions> options)
         {

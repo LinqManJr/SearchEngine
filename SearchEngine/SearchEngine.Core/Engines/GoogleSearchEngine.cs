@@ -14,16 +14,11 @@ namespace SearchEngine.Core.Engines
 {
     public class GoogleSearchEngine : ISearchEngine
     {        
-        private readonly GoogleSearchOptions _options;
-                
-        /*public GoogleSearchEngine(GoogleSearchOptions options)
-        {
-            _options = options;
-        }*/
+        private readonly GoogleSearchOptions _options;        
 
-        public GoogleSearchEngine(IOptions<SearchEngineOptions> options)
+        public GoogleSearchEngine(IOptions<GoogleSearchOptions> options)
         {
-            _options = options as GoogleSearchOptions;
+            _options = options.Value;
         }
 
         public SearchResult Search(string pattern)
