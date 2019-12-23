@@ -33,8 +33,8 @@ namespace SearchEngine.Tests
             {
                 Name = "google",
                 Uri = string.Empty,
-                Apikey = "AIzaSyB3ex6PDKCy54J92_1rB0q1TBn1jbv43SU",
-                AppId = "012320430393294220051:cxnkugrhcjf"
+                Apikey = "",
+                AppId = ""
             };
 
             return new SearchService(new List<ISearchEngine> { new GoogleSearchEngine(googleOptions) });
