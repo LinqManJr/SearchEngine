@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}"
 @model SearchEngine.RazorPages.DbSearchModel
 @{
     ViewData["Title"] = "DbSearch";
@@ -47,7 +47,7 @@
                 <td>@m.Engine</td>
                 <td>@m.SearchWord</td>
                 <td>@m.Result.ItemsCount</td>
-                <td>@Html.ActionLink("Details", "Details", new { id = @m.Id }, new { @class = "linkDetails" })</td>
+                <td><a  asp-page-handler="Details" asp-route-id="@m.ResultId" target="_blank"/>Details</td>
             </tr>
         }
     </tbody>
