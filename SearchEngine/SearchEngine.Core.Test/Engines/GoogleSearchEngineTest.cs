@@ -113,7 +113,7 @@ namespace SearchEngine.Core.Test.Engines
             var result = _searchEngine.Search("nginx");
 
             Assert.That(result.Error != null);
-            Assert.That(result.Error.Title == "NotFound" || result.Error.Title == "BadRequest");
+            Assert.That(result.Error.Title == "NotFound" || result.Error.Title == "BadRequest" || result.Error.Title == "NotSupportedError");
             Assert.That(result.Error.Description.StartsWith("Message[Requested entity was not found.]"));
         }
 

@@ -1,15 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using NUnit.Framework;
 using SearchEngine.Core.Models;
 using SearchEngine.Domain.Context;
-using SearchEngine.Domain.Models;
 using SearchEngine.WebApp.Services;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SearchEngine.Tests.Services
