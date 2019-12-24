@@ -4,6 +4,7 @@
     {
         public string Name { get; set; }
         public string Uri { get; set; }
-        public string Apikey { get; set; }               
+        public string Apikey { get; set; }
+        public long NumItems { get; set; } = 10;
     }
 }

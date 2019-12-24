@@ -1,4 +1,5 @@
-﻿using SearchEngine.Core.Configurations;
+﻿using Microsoft.Extensions.Options;
+using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -8,17 +9,23 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using SearchEngine.Core.Extensions;
 
 namespace SearchEngine.Core.Engines
 {
     public class YandexSearchEngine : ISearchEngine
     {   
         
-        private readonly YandexSearchOptions _options;
-        
+        private readonly YandexSearchOptions _options;             
+
         public YandexSearchEngine(YandexSearchOptions options)
         {
             _options = options;
+        }
+
+        public YandexSearchEngine(IOptions<YandexSearchOptions> options)
+        {
+            _options = options.Value;
         }
 
         public SearchResult Search(string pattern)

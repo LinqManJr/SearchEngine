@@ -1,0 +1,18 @@
+﻿@using SearchEngine.Domain.Models
+@{
+    ViewData["Details"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+@model Result
+@if (Model == null) return;
+@foreach (var m in Model.Items)
+{
+    <div class="list-group">
+        <div class="list-group-item ">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">@m.SiteTitle</h5>
+                <small><a href="@m.ActionLink">@m.ActionLink</a></small>
+            </div>
+        </div>
+    </div>
+}

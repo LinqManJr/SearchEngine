@@ -4,10 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SearchEngine.Core.Configurations;
+using SearchEngine.Core.Engines;
+using SearchEngine.Core.Services;
 using SearchEngine.Domain.Context;
-using SearchEngine.WebApp.Services;
+using SearchEngine.RazorPages.Services;
 
-namespace SearchEngine.WebApp
+namespace SearchEngine.RazorPages
 {
     public class Startup
     {
@@ -21,13 +24,22 @@ namespace SearchEngine.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("SEConnection");
-            services.AddDbContext<SearchContext>(options => options.UseSqlServer(connectionString));            
+            services.AddDbContext<SearchContext>(options => options.UseSqlServer(connectionString));
 
-            services.AddScoped<SearchServiceFactory>();
+            services.AddOptions();
+
+            var configSection = Configuration.GetSection("EnginesConfig");
+            services.Configure<SearchEngineOptions>(configSection.GetSection("Bing"));
+            services.Configure<GoogleSearchOptions>(configSection.GetSection("Google"));
+            services.Configure<YandexSearchOptions>(configSection.GetSection("Yandex"));
+
+            services.AddScoped<ISearchEngine, BingSearchEngine>();
+            services.AddScoped<ISearchEngine, GoogleSearchEngine>();
+            services.AddScoped<ISearchEngine, YandexSearchEngine>();
+           
             services.AddScoped<ISearchService, SearchService>();
             services.AddScoped<IDatabaseService, SearchDbService>();
-
-            services.AddControllersWithViews();            
+            services.AddRazorPages();
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -40,6 +52,7 @@ namespace SearchEngine.WebApp
             {                             
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -47,9 +60,7 @@ namespace SearchEngine.WebApp
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Search}/{action=Index}/{id?}");                
+                endpoints.MapRazorPages();
             });
         }
     }

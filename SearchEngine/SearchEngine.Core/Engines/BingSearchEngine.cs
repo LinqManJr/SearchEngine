@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Linq;
 using SearchEngine.Core.Configurations;
 using SearchEngine.Core.Models;
 using System;
@@ -16,12 +17,18 @@ namespace SearchEngine.Core.Engines
         public BingSearchEngine(SearchEngineOptions options)
         {
             _options = options;
-        }        
+        }
+
+        public BingSearchEngine(IOptions<SearchEngineOptions> options)
+        {
+            _options = options.Value;
+        }
 
         public SearchResult Search(string pattern)
         {
             var uriQuery = _options.Uri + "?q=" + Uri.EscapeDataString(pattern);
-            
+            uriQuery = string.Concat(uriQuery, $"&count={_options.NumItems}");
+
             WebRequest request = WebRequest.Create(uriQuery);
             request.Headers["Ocp-Apim-Subscription-Key"] = _options.Apikey;
             try 
@@ -53,7 +60,7 @@ namespace SearchEngine.Core.Engines
         public async Task<SearchResult> SearchAsync(string pattern)
         {
             var uriQuery = _options.Uri + "?q=" + Uri.EscapeDataString(pattern);
-            uriQuery = string.Concat(uriQuery, "&count=10");
+            uriQuery = string.Concat(uriQuery, $"&count={_options.NumItems}");
 
             WebRequest request = WebRequest.Create(uriQuery);
             request.Headers["Ocp-Apim-Subscription-Key"] = _options.Apikey;
