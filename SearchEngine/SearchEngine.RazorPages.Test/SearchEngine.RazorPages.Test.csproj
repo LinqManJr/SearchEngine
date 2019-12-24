@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SearchEngine.Core\SearchEngine.Core.csproj" />
     <ProjectReference Include="..\SearchEngine.RazorPages\SearchEngine.RazorPages.csproj" />
   </ItemGroup>
