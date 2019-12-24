@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0D4D3D72
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchEngine.Core.Test", "SearchEngine.Core.Test\SearchEngine.Core.Test.csproj", "{01581E41-4667-4523-AE4C-1C7AE528B792}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchEngine.RazorPages.Test", "SearchEngine.RazorPages.Test\SearchEngine.RazorPages.Test.csproj", "{A558EA91-4A76-4BCA-B44D-82C2B7EDEC36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,12 +43,17 @@ Global
 		{01581E41-4667-4523-AE4C-1C7AE528B792}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01581E41-4667-4523-AE4C-1C7AE528B792}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01581E41-4667-4523-AE4C-1C7AE528B792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A558EA91-4A76-4BCA-B44D-82C2B7EDEC36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A558EA91-4A76-4BCA-B44D-82C2B7EDEC36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A558EA91-4A76-4BCA-B44D-82C2B7EDEC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A558EA91-4A76-4BCA-B44D-82C2B7EDEC36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{01581E41-4667-4523-AE4C-1C7AE528B792} = {0D4D3D72-8071-434A-904F-391585B0371C}
+		{A558EA91-4A76-4BCA-B44D-82C2B7EDEC36} = {0D4D3D72-8071-434A-904F-391585B0371C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B0F93BA4-F01F-4497-A073-7351EDB52ED4}
